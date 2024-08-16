@@ -6,23 +6,26 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("Bullet shot by Player")]
-    private GameObject prefab;
-
-    [SerializeField]
     [Tooltip("Since the bullet is shot")]
     private GameObject shootingPoint;
-    
-    
+
+    void Start()
+    {
+        
+    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            GameObject bullet = Instantiate(prefab);
+            // OBJECT POOLING (EXECUTION)
+            GameObject bullet = ObjectPool.SharedInstance.GetFirstPooledObject(); // Getting the firs bullet of the List pooledObjects
             bullet.transform.position = shootingPoint.transform.position;
             bullet.transform.rotation = shootingPoint.transform.rotation;
-            //TODO:
-            Destroy(bullet,2);
+            bullet.SetActive(true); // Enable the bullet to display
         }
     }
+
+    
+    
 }

@@ -6,12 +6,18 @@ public class Autodestroy : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Time after which the bullet is destroyed")]
-    private float destructionDelay;
+    private float delay;
     
-    void Start()
+    void OnEnable()
     {
-        Destroy(gameObject, destructionDelay);
+        Invoke("HideObject", delay); 
     }
 
-    
+    /// <summary>
+    /// Method that hides the object instantiated by "GetFirstPooledObject()", stored in "bullet" variable
+    /// </summary>
+    private void HideObject()
+    {
+        gameObject.SetActive(false); // Desable the object
+    }
 }
