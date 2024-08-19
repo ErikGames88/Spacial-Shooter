@@ -63,7 +63,7 @@ public class ObjectPool : MonoBehaviour
         for(int i = 0; i < amountToPool; i++)
         {
             // Check if the first object in the list is not active in the Hierarchy (first position [i] = 0)
-            if(!pooledObjects[i].activeInHierarchy) 
+            if(!pooledObjects[i].activeInHierarchy) // It was desable before in Start
             {
                 return pooledObjects[i]; // If it is not, return it
             }
