@@ -29619,33 +29619,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5190828717143451369}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &2836004474926343871
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2836004474926343862}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 1
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
 --- !u!1001 &5190828717143451369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29704,26 +29677,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3059555518569177637, guid: 834c53d8cdc875f4695a1093630919b1,
-        type: 3}
-      propertyPath: speed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3059555518569177637, guid: 834c53d8cdc875f4695a1093630919b1,
-        type: 3}
-      propertyPath: rotationSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268744735921138884, guid: 834c53d8cdc875f4695a1093630919b1,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.65504074
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268744735921138884, guid: 834c53d8cdc875f4695a1093630919b1,
-        type: 3}
-      propertyPath: m_Center.x
-      value: 0.007217407
-      objectReference: {fileID: 0}
     - target: {fileID: 6773446730153664013, guid: 834c53d8cdc875f4695a1093630919b1,
         type: 3}
       propertyPath: m_Name
@@ -29732,11 +29685,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6773446730153664013, guid: 834c53d8cdc875f4695a1093630919b1,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2836004474926343871}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 834c53d8cdc875f4695a1093630919b1, type: 3}
 --- !u!4 &5255905011307158703 stripped
 Transform:

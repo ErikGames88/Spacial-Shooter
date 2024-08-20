@@ -5,7 +5,7 @@ using UnityEngine;
 public class Autodestroy : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("Time after which the bullet is destroyed")]
+    [Tooltip("Time after which the laser is destroyed")]
     private float delay;
     
     void OnEnable()

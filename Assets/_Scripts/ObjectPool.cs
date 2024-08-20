@@ -15,6 +15,10 @@ public class ObjectPool : MonoBehaviour
     [Tooltip("Bullet shot by Player")]
     private GameObject prefab;
 
+    /*[SerializeField]
+    [Tooltip("Bullet shot by Enemy")]
+    private GameObject enemyPrefab;*/
+
 
     // OBJECT POOLING (PROPERTIES)
 
@@ -23,7 +27,7 @@ public class ObjectPool : MonoBehaviour
     private List<GameObject> pooledObjects; // List where the pooled objects are located 
     
     [SerializeField]
-    [Tooltip("Number of objects to pool (Number of bullets")]
+    [Tooltip("Number of objects to pool (Number of lasers")]
     private int amountToPool; // Number of objects to pool (Number of bullets)
 
     void Awake()
