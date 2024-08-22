@@ -16,9 +16,20 @@ public class Life : MonoBehaviour
             
             if(amount <= 0)
             {
-                Destroy(gameObject);
+                Animator anim = GetComponent<Animator>();
+                anim.SetTrigger("Play Die");
+
+                Invoke("PlayDestruction", 2);
+
+                Destroy(gameObject, 2);
             }
         } 
+    }
+
+    void PlayDestruction()
+    {
+        ParticleSystem explosion = GetComponentInChildren<ParticleSystem>();
+        explosion.Play();
     }
 
 

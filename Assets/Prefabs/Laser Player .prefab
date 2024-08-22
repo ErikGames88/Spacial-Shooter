@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e40c77d916619429584c11fdb5ba7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 50
 --- !u!136 &4399348988268881714
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -96,10 +96,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.030493714
+  m_Radius: 0.086130336
   m_Height: 1.982631
   m_Direction: 2
-  m_Center: {x: 0.00008173473, y: 0.00021368265, z: -0.0042716265}
+  m_Center: {x: -0.0017129779, y: 0.00021369755, z: -0.0042716265}
 --- !u!54 &4454941019717837225
 Rigidbody:
   m_ObjectHideFlags: 0
