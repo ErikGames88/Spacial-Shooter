@@ -38,7 +38,7 @@ public class ObjectPool : MonoBehaviour
         } 
         else
         {
-            Debug.LogError("There is already another pool on the scene");
+            Debug.LogWarning("There is already another pool on the scene: ", gameObject);
             Destroy(gameObject); // Destroy other possible pools (there is only one)
         }
     }
