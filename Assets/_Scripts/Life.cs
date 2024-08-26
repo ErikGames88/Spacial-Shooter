@@ -19,9 +19,8 @@ public class Life : MonoBehaviour
                 Animator anim = GetComponent<Animator>();
                 anim.SetTrigger("Play Die");
 
-                Invoke("PlayDestruction", 2);
-
-                Destroy(gameObject, 2);
+                Invoke("PlayDestruction", 1.01f);
+                Destroy(gameObject, 1.3f);
             }
         } 
     }

@@ -18,8 +18,10 @@ public class WaveSpawner : MonoBehaviour
     
     void Start()
     {
+        WaveManager.SharedInstance.waves.Add(this);
+
         InvokeRepeating("SpawnEnemy", startTime, spawnRate);
-        Invoke("CancelInvoke", endTime);
+        Invoke("EndWave", endTime);
     }
 
     /// <summary>
@@ -31,5 +33,11 @@ public class WaveSpawner : MonoBehaviour
         Quaternion quaternion = Quaternion.Euler(0, transform.rotation.eulerAngles.y + rangeEnemy, 0);*/
         Instantiate(prefab, transform.position, transform.rotation);
         
+    }
+
+    void EndWave()
+    {
+        WaveManager.SharedInstance.waves.Remove(this);
+        CancelInvoke();
     }
 }

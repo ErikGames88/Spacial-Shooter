@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Score Manager diplicates must be destroyed: ", gameObject);
+            Debug.LogWarning("Score Manager duplicates must be destroyed: ", gameObject);
             Destroy(gameObject);
         }
     }

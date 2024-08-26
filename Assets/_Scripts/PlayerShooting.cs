@@ -9,16 +9,26 @@ public class PlayerShooting : MonoBehaviour
     [Tooltip("Since the laser is shot")]
     private GameObject shootingPoint;
 
-    void Start()
+    private Animator _animator;
+
+    void Awake()
     {
-        
+        _animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            // OBJECT POOLING (EXECUTION)
+            _animator.SetTrigger("Shot Laser");
+
+            Invoke("FireBullet", 0.15f);
+        }
+    }
+
+    void FireBullet()
+    {
+        // OBJECT POOLING (EXECUTION)
             GameObject laser = ObjectPool.SharedInstance.GetFirstPooledObject(); 
             // Getting the firs bullet of the List pooledObjects
 
@@ -26,9 +36,6 @@ public class PlayerShooting : MonoBehaviour
             laser.transform.position = shootingPoint.transform.position;
             laser.transform.rotation = shootingPoint.transform.rotation;
             laser.SetActive(true); // Enable the bullet to display
-        }
     }
-
-    
     
 }
