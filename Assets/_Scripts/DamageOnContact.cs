@@ -8,6 +8,7 @@ public class DamageOnContact : MonoBehaviour
     [SerializeField]
     [Tooltip("Amount of damage caused by the laser")]
     private float damage;
+    
     void OnTriggerEnter(Collider other)
     {
         //Debug.Log(other.name);

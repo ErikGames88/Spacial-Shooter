@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Life : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Amount of life of Player and enemies")]
     private float amount;
+
+    [Tooltip("Related death event")]
+    public UnityEvent onDeath;
+    
     public float Amount
     {
         get => amount;
@@ -16,20 +21,9 @@ public class Life : MonoBehaviour
             
             if(amount <= 0)
             {
-                Animator anim = GetComponent<Animator>();
-                anim.SetTrigger("Play Die");
-
-                Invoke("PlayDestruction", 1.01f);
-                Destroy(gameObject, 1.3f);
+                onDeath.Invoke();
             }
         } 
     }
-
-    void PlayDestruction()
-    {
-        ParticleSystem explosion = GetComponentInChildren<ParticleSystem>();
-        explosion.Play();
-    }
-
 
 }    

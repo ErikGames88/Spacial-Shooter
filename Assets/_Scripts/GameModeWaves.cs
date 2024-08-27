@@ -8,19 +8,34 @@ public class GameModeWaves : MonoBehaviour
     [SerializeField]
     [Tooltip("Player Life")]
     private Life playerLife;
-    
-    void Update()
+
+    [SerializeField]
+    [Tooltip("Base Life")]
+    private Life coreLife;
+
+    void Awake()
     {
-        // WIN
-        if(EnemyManager.SharedInstace.enemies.Count <= 0 && WaveManager.SharedInstance.waves.Count <= 0)
+        playerLife.onDeath.AddListener(CheckLoseCondition);
+        coreLife.onDeath.AddListener(CheckLoseCondition);
+
+        EnemyManager.SharedInstace.onEnemyChanged.AddListener(CheckWinCondition);
+        WaveManager.SharedInstance.onWaveChanged.AddListener(CheckWinCondition);
+    }
+
+    void CheckWinCondition()
+    {
+        if(EnemyManager.SharedInstace.EnemyCount <= 0 && WaveManager.SharedInstance.WaveCount <= 0)
         {
             SceneManager.LoadScene("Win Scene", LoadSceneMode.Single);
         }
-
-        // LOSE
-        if(playerLife.Amount <= 0)
-        {
-            SceneManager.LoadScene("Lose Scene", LoadSceneMode.Single);
-        }
     }
+
+    void CheckLoseCondition()
+    {
+        Animator anim = GetComponent<Animator>();
+        anim.SetTrigger("Play Die");
+
+        SceneManager.LoadScene("Lose Scene", LoadSceneMode.Single);
+    }
+    
 }
