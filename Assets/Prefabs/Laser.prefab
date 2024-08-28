@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4454941019717837225}
   - component: {fileID: 3126823838334414211}
   m_Layer: 8
-  m_Name: 'Laser Player '
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e40c77d916619429584c11fdb5ba7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 10
 --- !u!136 &4399348988268881714
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -139,7 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34a70ba721f9dc46afbb6e0068d5e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0
+  maximumLife: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1100502350405229011
 PrefabInstance:
   m_ObjectHideFlags: 0

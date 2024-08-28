@@ -11,6 +11,10 @@ public class PlayerShooting : MonoBehaviour
 
     private Animator _animator;
 
+    public int bulletsAmount;
+
+    
+
     void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -18,7 +22,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        if(Input.GetKeyDown(KeyCode.Mouse0) && bulletsAmount > 0)
         {
             _animator.SetTrigger("Shot Laser");
 
@@ -36,6 +40,8 @@ public class PlayerShooting : MonoBehaviour
             laser.transform.position = shootingPoint.transform.position;
             laser.transform.rotation = shootingPoint.transform.rotation;
             laser.SetActive(true); // Enable the bullet to display
+
+            bulletsAmount--;
     }
     
 }

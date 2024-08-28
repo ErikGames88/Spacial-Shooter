@@ -12,9 +12,16 @@ public class WaveManager : MonoBehaviour
 
     public UnityEvent onWaveChanged;
 
-    public int WaveCount
+    public int WavesCount
     {
         get => waves.Count;
+    }
+
+    private int maxWaves;
+
+    public int MaxWaves
+    {
+        get => maxWaves;
     }
 
     void Awake()
@@ -32,6 +39,7 @@ public class WaveManager : MonoBehaviour
 
     public void AddWave(WaveSpawner wave)
     {
+        maxWaves++;
         waves.Add(wave);
         onWaveChanged.Invoke();
     }

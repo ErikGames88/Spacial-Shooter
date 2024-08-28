@@ -13,18 +13,18 @@ public class GameModeWaves : MonoBehaviour
     [Tooltip("Base Life")]
     private Life coreLife;
 
-    void Awake()
+    void Start()
     {
         playerLife.onDeath.AddListener(CheckLoseCondition);
         coreLife.onDeath.AddListener(CheckLoseCondition);
 
-        EnemyManager.SharedInstace.onEnemyChanged.AddListener(CheckWinCondition);
+        EnemyManager.SharedInstance.onEnemyChanged.AddListener(CheckWinCondition);
         WaveManager.SharedInstance.onWaveChanged.AddListener(CheckWinCondition);
     }
 
     void CheckWinCondition()
     {
-        if(EnemyManager.SharedInstace.EnemyCount <= 0 && WaveManager.SharedInstance.WaveCount <= 0)
+        if(EnemyManager.SharedInstance.EnemyCount <= 0 && WaveManager.SharedInstance.WavesCount <= 0)
         {
             SceneManager.LoadScene("Win Scene", LoadSceneMode.Single);
         }

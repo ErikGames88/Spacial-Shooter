@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        EnemyManager.SharedInstace.AddEnemy(this);
+        EnemyManager.SharedInstance.AddEnemy(this);
     }
     
     void DestroyEnemy()
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
         Invoke("PlayDestruction", 1f);
         Destroy(gameObject, 2f);
 
-        EnemyManager.SharedInstace.AddEnemy(this);
+        EnemyManager.SharedInstance.AddEnemy(this);
         ScoreManager.SharedInstance.Amount += pointsAmount;
 
         if(ScoreManager.SharedInstance.Amount >= 9999999)

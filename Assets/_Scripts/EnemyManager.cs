@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class EnemyManager : MonoBehaviour
 {
-    public static EnemyManager SharedInstace;
+    public static EnemyManager SharedInstance;
 
     private List<Enemy> enemies;
 
@@ -19,9 +19,9 @@ public class EnemyManager : MonoBehaviour
 
     void Awake()
     {
-        if(SharedInstace == null)
+        if(SharedInstance == null)
         {
-            SharedInstace = this;
+            SharedInstance = this;
             enemies = new List<Enemy>();
         }
         else
