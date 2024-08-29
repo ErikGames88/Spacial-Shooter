@@ -26,9 +26,12 @@ public class Enemy : MonoBehaviour
         anim.SetTrigger("Play Die");
 
         Invoke("PlayDestruction", 1f);
+        
+        OnDestroy();
+
         Destroy(gameObject, 2f);
 
-        EnemyManager.SharedInstance.AddEnemy(this);
+        EnemyManager.SharedInstance.RemoveEnemy(this);
         ScoreManager.SharedInstance.Amount += pointsAmount;
 
         if(ScoreManager.SharedInstance.Amount >= 9999999)

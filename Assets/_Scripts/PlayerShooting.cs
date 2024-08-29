@@ -11,18 +11,20 @@ public class PlayerShooting : MonoBehaviour
 
     private Animator _animator;
 
-    public int bulletsAmount;
+    [SerializeField]
+    private ParticleSystem fireEffect;
 
-    
+    public int bulletsAmount;
 
     void Awake()
     {
         _animator = GetComponent<Animator>();
+        //fireEffect = GetComponent<ParticleSystem>();
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0) && bulletsAmount > 0)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && bulletsAmount > 0 && Time.timeScale > 0)
         {
             _animator.SetTrigger("Shot Laser");
 
@@ -33,15 +35,21 @@ public class PlayerShooting : MonoBehaviour
     void FireBullet()
     {
         // OBJECT POOLING (EXECUTION)
-            GameObject laser = ObjectPool.SharedInstance.GetFirstPooledObject(); 
-            // Getting the firs bullet of the List pooledObjects
+        GameObject laser = ObjectPool.SharedInstance.GetFirstPooledObject(); 
+        // Getting the firs bullet of the List pooledObjects
 
-            laser.layer = LayerMask.NameToLayer("Player Laser");
-            laser.transform.position = shootingPoint.transform.position;
-            laser.transform.rotation = shootingPoint.transform.rotation;
-            laser.SetActive(true); // Enable the bullet to display
+        laser.layer = LayerMask.NameToLayer("Player Laser");
+        laser.transform.position = shootingPoint.transform.position;
+        laser.transform.rotation = shootingPoint.transform.rotation;
+        laser.SetActive(true); // Enable the bullet to display
 
-            bulletsAmount--;
+        fireEffect.Play();
+
+        bulletsAmount--;
+        if(bulletsAmount < 0)
+        {
+            bulletsAmount = 0;
+        }
     }
     
 }
