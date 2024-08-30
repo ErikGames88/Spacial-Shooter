@@ -2391,6 +2391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingPoint: {fileID: 2991192643935261972}
   fireEffect: {fileID: 8957038955471264624}
+  shotSFX: {fileID: 1605439004208359379, guid: 61f8a14e6800a67459c9967e07a8772e, type: 3}
   bulletsAmount: 100
 --- !u!114 &762018726630512185
 MonoBehaviour:

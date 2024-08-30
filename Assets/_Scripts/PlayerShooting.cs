@@ -14,21 +14,51 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]
     private ParticleSystem fireEffect;
 
+    [SerializeField]
+    private AudioSource shotSFX;
+    
+    [SerializeField]
+    private AudioSource noShotSFX;
+    
+    private float fireRate = 0.5f;
+
+    private float lastShotTime;
+
     public int bulletsAmount;
 
     void Awake()
     {
         _animator = GetComponent<Animator>();
-        //fireEffect = GetComponent<ParticleSystem>();
+        
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0) && bulletsAmount > 0 && Time.timeScale > 0)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && Time.timeScale > 0)
         {
-            _animator.SetTrigger("Shot Laser");
+            _animator.SetBool("Shot Laser", true);
 
-            Invoke("FireBullet", 0.15f);
+            if( bulletsAmount > 0)
+            {
+                var timeSinceLastShot = Time.time - lastShotTime;
+                if(timeSinceLastShot < fireRate)
+                {
+                    return;
+                }
+               
+            
+                lastShotTime = Time.time;
+
+                Invoke("FireBullet", 0.15f);
+            }
+            else
+            {
+                Instantiate(noShotSFX, transform.position, transform.rotation).GetComponent<AudioSource>().Play();
+            }
+        }
+        else
+        {
+            _animator.SetBool("Shot Laser", false);
         }
     }
 
@@ -44,6 +74,7 @@ public class PlayerShooting : MonoBehaviour
         laser.SetActive(true); // Enable the bullet to display
 
         fireEffect.Play();
+        Instantiate(shotSFX, transform.position, transform.rotation).GetComponent<AudioSource>().Play();
 
         bulletsAmount--;
         if(bulletsAmount < 0)
