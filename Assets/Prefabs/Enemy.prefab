@@ -1726,6 +1726,50 @@ Transform:
   - {fileID: 6344515373016664000}
   m_Father: {fileID: 6382035823590445302}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4928646111216042849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7002667725115237339}
+  - component: {fileID: 8902728987780318642}
+  m_Layer: 7
+  m_Name: AI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7002667725115237339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928646111216042849}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1125658988015225000}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8902728987780318642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928646111216042849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90246619c9cf1fe4798974abcda1c0b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5284095769370342795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2487,7 +2531,7 @@ Transform:
   m_GameObject: {fileID: 7926556129384663290}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 58.68, y: 53.789997, z: 67.971085}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2500,6 +2544,7 @@ Transform:
   - {fileID: 5899485370636232566}
   - {fileID: 8805274578518905039}
   - {fileID: 6254572617205369691}
+  - {fileID: 7002667725115237339}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4301505366083123837
@@ -2584,10 +2629,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.81761646
+  m_Radius: 0.4118849
   m_Height: 2.080738
   m_Direction: 1
-  m_Center: {x: -0.027947545, y: 0.9789295, z: -0.02349472}
+  m_Center: {x: -0.011718273, y: 0.9789295, z: -0.02349472}
 --- !u!54 &4763747998683725088
 Rigidbody:
   m_ObjectHideFlags: 0
