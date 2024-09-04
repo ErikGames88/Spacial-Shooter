@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Sight))]
 public class EnemyAI : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    private NavMeshAgent _agent;
 
     public enum EnemyState {GoToCore, AttackCore, ChasePlayer, AttackPlayer}
 
@@ -21,11 +21,17 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private float tolerance = 1.2f;
 
+    private float lastShotTime;
+
+    public float shotRate;
+
+    private Animator _animator;
+
     void Awake()
     {
-        agent = GetComponentInParent<NavMeshAgent>();
-
+        _agent = GetComponentInParent<NavMeshAgent>();
         _sight = GetComponent<Sight>();
+        _animator = GetComponentInParent<Animator>();
 
         coreTransform = GameObject.FindWithTag("Core").transform;
     }
@@ -57,9 +63,10 @@ public class EnemyAI : MonoBehaviour
 
     private void GoToCore()
     {
-        agent.isStopped = false;
+        _animator.SetBool("Shot Laser", false);
 
-        agent.SetDestination(coreTransform.position);
+        _agent.isStopped = false;
+        _agent.SetDestination(coreTransform.position);
 
         if(_sight.detectedTarget != null)
         {
@@ -75,19 +82,24 @@ public class EnemyAI : MonoBehaviour
 
     private void AttackCore()
     {
-        agent.isStopped = true;
+        _agent.isStopped = true;
+
+        LookAt(coreTransform.position);
+        ShootTarget();
     }	
 
     private void ChasePlayer()
     {
+        _animator.SetBool("Shot Laser", false);
+
         if(_sight.detectedTarget == null)
         {
             currentState = EnemyState.GoToCore;
             return;
         }
 
-        agent.isStopped = false;
-        agent.SetDestination(_sight.detectedTarget.transform.position);
+        _agent.isStopped = false;
+        _agent.SetDestination(_sight.detectedTarget.transform.position);
 
         float distanceToPlayer = Vector3.Distance(transform.position, _sight.detectedTarget.transform.position);
         if(distanceToPlayer < playerAttackDistance)
@@ -98,7 +110,7 @@ public class EnemyAI : MonoBehaviour
 
     private void AttackPlayer()
     {
-        agent.isStopped = true;
+        _agent.isStopped = true;
 
         if(_sight.detectedTarget == null)
         {
@@ -106,12 +118,43 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
+        LookAt(_sight.detectedTarget.transform.position);
+        ShootTarget();
+
         float distanceToPlayer = Vector3.Distance(transform.position, _sight.detectedTarget.transform.position);
         if(distanceToPlayer > playerAttackDistance * tolerance)
         {
             currentState = EnemyState.ChasePlayer;
         }
+    }
+
+    void ShootTarget()
+    {
+        if(Time.timeScale > 0)
+        {
+            var timeSiceLastShot = Time.time - lastShotTime;
+            if(timeSiceLastShot < shotRate)
+            {
+                return;
+            }
+
+            lastShotTime = Time.time;
+
+            _animator.SetBool("Shot Laser", true);
+            var laser = ObjectPool.SharedInstance.GetFirstPooledObject();
+            laser.layer = LayerMask.NameToLayer("Enemy Laser");
+            laser.transform.position = transform.position;
+            laser.transform.rotation = transform.rotation;
+            laser.SetActive(true);
+        }
     }	
+
+    void LookAt(Vector3 targetPosition)
+    {
+        var directionToLook = Vector3.Normalize(targetPosition - transform.position);
+        directionToLook.y = 0;
+        transform.parent.forward = directionToLook;
+    }
 
     void OnDrawGizmos()
     {

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 9047442015241023930}
   - component: {fileID: 7702589973474242300}
   - component: {fileID: 2163373493423196817}
+  - component: {fileID: 3405464378988670629}
+  - component: {fileID: 4619068222126253854}
   - component: {fileID: 3872000410890563938}
   - component: {fileID: 3768383292110862689}
-  - component: {fileID: 4619068222126253854}
   m_Layer: 9
   m_Name: Laser Enemy
   m_TagString: Untagged
@@ -63,6 +64,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+--- !u!114 &3405464378988670629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4952405446110492612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e40c77d916619429584c11fdb5ba7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+--- !u!114 &4619068222126253854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4952405446110492612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34a70ba721f9dc46afbb6e0068d5e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumLife: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &3872000410890563938
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -113,19 +143,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4619068222126253854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4952405446110492612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b34a70ba721f9dc46afbb6e0068d5e12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 0
 --- !u!1001 &9085340077509205849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,11 +205,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6de2ee8968c55004e9b55fbc2302ed16, type: 2}
+      objectReference: {fileID: 2100000, guid: 4170684faac315c44a2e32634c2278f2, type: 2}
     - target: {fileID: 8973809544742087440, guid: 6ab262b1ad1734942b4388bee8c5e69a,
         type: 3}
       propertyPath: m_Name
-      value: Bullet
+      value: Laser
       objectReference: {fileID: 0}
     - target: {fileID: 8973809544742087440, guid: 6ab262b1ad1734942b4388bee8c5e69a,
         type: 3}

@@ -1796,6 +1796,7 @@ MonoBehaviour:
   coreAttackDistance: 3
   playerAttackDistance: 6
   tolerance: 1.2
+  shotRate: 1
 --- !u!1 &5284095769370342795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,6 +2538,7 @@ GameObject:
   - component: {fileID: 1125658988015225000}
   - component: {fileID: 4301505366083123837}
   - component: {fileID: 6973401120408945017}
+  - component: {fileID: 7611367754156115358}
   - component: {fileID: 4848779502197473132}
   - component: {fileID: 6922232416325359978}
   - component: {fileID: 4763747998683725088}
@@ -2602,6 +2604,18 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7611367754156115358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7926556129384663290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb7a4bd9c5e8624295b01c102c47fed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &4848779502197473132
 Animator:
   serializedVersion: 5

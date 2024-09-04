@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 9204184289187528363}
   - component: {fileID: 3252657194752238982}
   - component: {fileID: -4770652260199979810}
+  - component: {fileID: 3126823838334414211}
   - component: {fileID: 4399348988268881714}
   - component: {fileID: 4454941019717837225}
-  - component: {fileID: 3126823838334414211}
   m_Layer: 8
   m_Name: Laser
   m_TagString: Untagged
@@ -77,6 +77,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+--- !u!114 &3126823838334414211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278949786887683986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34a70ba721f9dc46afbb6e0068d5e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumLife: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &4399348988268881714
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -127,22 +143,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3126823838334414211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8278949786887683986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b34a70ba721f9dc46afbb6e0068d5e12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maximumLife: 0
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1100502350405229011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ PrefabInstance:
     - target: {fileID: 8973809544742087440, guid: 6ab262b1ad1734942b4388bee8c5e69a,
         type: 3}
       propertyPath: m_Name
-      value: Bullet
+      value: Laser
       objectReference: {fileID: 0}
     - target: {fileID: 8973809544742087440, guid: 6ab262b1ad1734942b4388bee8c5e69a,
         type: 3}
