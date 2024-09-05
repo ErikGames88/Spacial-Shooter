@@ -33,7 +33,7 @@ public class EnemyAI : MonoBehaviour
         _sight = GetComponent<Sight>();
         _animator = GetComponentInParent<Animator>();
 
-        coreTransform = GameObject.FindWithTag("Core").transform;
+        coreTransform = GameObject.FindGameObjectWithTag("Core").transform;
     }
 
     void Update()
