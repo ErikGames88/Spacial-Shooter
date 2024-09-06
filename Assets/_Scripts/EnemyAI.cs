@@ -25,6 +25,9 @@ public class EnemyAI : MonoBehaviour
 
     public float shotRate;
 
+    [SerializeField]
+    private GameObject shootingPoint;
+
     private Animator _animator;
 
     void Awake()
@@ -32,7 +35,7 @@ public class EnemyAI : MonoBehaviour
         _agent = GetComponentInParent<NavMeshAgent>();
         _sight = GetComponent<Sight>();
         _animator = GetComponentInParent<Animator>();
-
+        
         coreTransform = GameObject.FindGameObjectWithTag("Core").transform;
     }
 
@@ -143,8 +146,8 @@ public class EnemyAI : MonoBehaviour
             _animator.SetBool("Shot Laser", true);
             var laser = ObjectPool.SharedInstance.GetFirstPooledObject();
             laser.layer = LayerMask.NameToLayer("Enemy Laser");
-            laser.transform.position = transform.position;
-            laser.transform.rotation = transform.rotation;
+            laser.transform.position = shootingPoint.transform.position;
+            laser.transform.rotation = shootingPoint.transform.rotation;
             laser.SetActive(true);
         }
     }	

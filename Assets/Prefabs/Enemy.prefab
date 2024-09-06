@@ -1797,6 +1797,8 @@ MonoBehaviour:
   playerAttackDistance: 6
   tolerance: 1.2
   shotRate: 0.5
+  shootingPoint: {fileID: 7075624447511250492}
+  laserMaterial: {fileID: 2100000, guid: 4170684faac315c44a2e32634c2278f2, type: 2}
 --- !u!1 &5284095769370342795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,7 +2212,8 @@ Transform:
   m_LocalPosition: {x: -9.913989, y: -10.731702, z: 9.284221}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 673621966293710975}
   m_Father: {fileID: 8392246018976297075}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6422939280567643034
@@ -2370,6 +2373,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8795459141506304121}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7075624447511250492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 673621966293710975}
+  m_Layer: 7
+  m_Name: Shooting Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &673621966293710975
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075624447511250492}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -109.7, y: 5.6, z: -10.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 357913297406374587}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &7231140234879428799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,10 +2690,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4118849
+  m_Radius: 0.5771903
   m_Height: 2.080738
   m_Direction: 1
-  m_Center: {x: -0.011718273, y: 0.9789295, z: -0.02349472}
+  m_Center: {x: 0.019150019, y: 0.9789295, z: -0.02349472}
 --- !u!54 &4763747998683725088
 Rigidbody:
   m_ObjectHideFlags: 0

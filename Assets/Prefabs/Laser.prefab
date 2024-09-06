@@ -138,11 +138,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1001 &1100502350405229011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -206,6 +206,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8719286424541429989, guid: 6ab262b1ad1734942b4388bee8c5e69a,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8719286424541429989, guid: 6ab262b1ad1734942b4388bee8c5e69a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4170684faac315c44a2e32634c2278f2, type: 2}
     - target: {fileID: 8973809544742087440, guid: 6ab262b1ad1734942b4388bee8c5e69a,
         type: 3}
       propertyPath: m_Name

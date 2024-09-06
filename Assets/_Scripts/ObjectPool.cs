@@ -30,8 +30,10 @@ public class ObjectPool : MonoBehaviour
     [Tooltip("Number of objects to pool (Number of lasers")]
     private int amountToPool; // Number of objects to pool (Number of bullets)
 
+    
     void Awake()
     {
+        
         if(SharedInstance == null) // Check that there is a pool in the scene (There will be no other)
         {
             SharedInstance = this; // "This" is the pool

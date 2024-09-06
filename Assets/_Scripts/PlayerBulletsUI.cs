@@ -20,6 +20,6 @@ public class PlayerBulletsUI : MonoBehaviour
     
     void Update()
     {
-        _text.text = "BULETS: "+ targetShooting.bulletsAmount;
+        _text.text = "AMMUNITION: "+ targetShooting.bulletsAmount;
     }
 }

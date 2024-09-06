@@ -18,6 +18,6 @@ public class WavesUI : MonoBehaviour
     void RefreshText()
     {
         _text.text = "WAVES: "+ (WaveManager.SharedInstance.MaxWaves -
-        WaveManager.SharedInstance.WavesCount) + "/ " + WaveManager.SharedInstance.MaxWaves;
+        WaveManager.SharedInstance.WavesCount) + " OF " + WaveManager.SharedInstance.MaxWaves;
     }
 }

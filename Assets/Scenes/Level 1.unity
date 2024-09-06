@@ -6215,8 +6215,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'SCORE: 0000000'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6c01eba757eaa5b4384d41506ef1e8af, type: 2}
-  m_sharedMaterial: {fileID: 6365633120189604288, guid: 6c01eba757eaa5b4384d41506ef1e8af,
+  m_fontAsset: {fileID: 11400000, guid: bfae349734ee35140a385ed83a8b5d99, type: 2}
+  m_sharedMaterial: {fileID: -6084414982513395536, guid: bfae349734ee35140a385ed83a8b5d99,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6241,7 +6241,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.45
+  m_fontSize: 57.1
   m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6563,8 +6563,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'REMAINING ENEMIES: 99999'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6c01eba757eaa5b4384d41506ef1e8af, type: 2}
-  m_sharedMaterial: {fileID: 6365633120189604288, guid: 6c01eba757eaa5b4384d41506ef1e8af,
+  m_fontAsset: {fileID: 11400000, guid: bfae349734ee35140a385ed83a8b5d99, type: 2}
+  m_sharedMaterial: {fileID: -6084414982513395536, guid: bfae349734ee35140a385ed83a8b5d99,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6589,7 +6589,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.7
+  m_fontSize: 38.9
   m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12048,10 +12048,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WAVES: 0/10'
+  m_text: 'WAVES: 0 of 10'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6c01eba757eaa5b4384d41506ef1e8af, type: 2}
-  m_sharedMaterial: {fileID: 6365633120189604288, guid: 6c01eba757eaa5b4384d41506ef1e8af,
+  m_fontAsset: {fileID: 11400000, guid: bfae349734ee35140a385ed83a8b5d99, type: 2}
+  m_sharedMaterial: {fileID: -6084414982513395536, guid: bfae349734ee35140a385ed83a8b5d99,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -12076,7 +12076,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.45
+  m_fontSize: 51.3
   m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -24598,10 +24598,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'BULLETS: 0000'
+  m_text: 'AMMUNITION: 0000'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6c01eba757eaa5b4384d41506ef1e8af, type: 2}
-  m_sharedMaterial: {fileID: 6365633120189604288, guid: 6c01eba757eaa5b4384d41506ef1e8af,
+  m_fontAsset: {fileID: 11400000, guid: bfae349734ee35140a385ed83a8b5d99, type: 2}
+  m_sharedMaterial: {fileID: -6084414982513395536, guid: bfae349734ee35140a385ed83a8b5d99,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -24626,7 +24626,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.4
+  m_fontSize: 44.05
   m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -25047,7 +25047,7 @@ PrefabInstance:
     - target: {fileID: 2607319991345083832, guid: 834c53d8cdc875f4695a1093630919b1,
         type: 3}
       propertyPath: bulletsAmount
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3059555518569177637, guid: 834c53d8cdc875f4695a1093630919b1,
         type: 3}
