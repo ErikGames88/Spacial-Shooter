@@ -8,16 +8,8 @@ public class GameOver : MonoBehaviour
 {
     public TextMeshProUGUI actualScore, actualTime, bestScore, bestTime;
 
-    [SerializeField]
-    private bool playerHasWon;
+    public bool playerHasWon;
 
-    void Awake()
-    {
-        actualScore = GetComponent<TextMeshProUGUI>();
-        actualTime = GetComponent<TextMeshProUGUI>();
-        bestScore = GetComponent<TextMeshProUGUI>();
-        bestTime = GetComponent<TextMeshProUGUI>();
-    }
     void Start()
     {
         Cursor.visible = true;
@@ -26,13 +18,12 @@ public class GameOver : MonoBehaviour
         if(playerHasWon)
         {
             actualScore.text = "SCORE: " + PlayerPrefs.GetInt("Last Score");
-            actualTime.text = "TIME: " + PlayerPrefs.GetInt("Last Time");
-            bestScore.text = "BEST SCORE: " + PlayerPrefs.GetFloat("High Score");
-            bestTime.text = "BEST TIME: " + PlayerPrefs.GetInt("Low Time");
+            actualTime.text = "TIME: " + PlayerPrefs.GetFloat("Last Time");
+            bestScore.text = "BEST SCORE: " + PlayerPrefs.GetInt("High Score");
+            bestTime.text = "BEST TIME: " + PlayerPrefs.GetFloat("Low Time");
         }
     }
 
-    
     public void ReloadLevel()
     {
         SceneManager.LoadScene("Level 1");

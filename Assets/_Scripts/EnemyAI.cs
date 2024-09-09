@@ -21,14 +21,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private float tolerance = 1.2f;
 
-    private float lastShotTime;
-
-    public float shotRate;
-
-    [SerializeField]
-    private GameObject shootingPoint;
-
     private Animator _animator;
+    
+    public Weapon weapon;
 
     void Awake()
     {
@@ -133,23 +128,10 @@ public class EnemyAI : MonoBehaviour
 
     void ShootTarget()
     {
-        if(Time.timeScale > 0)
-        {
-            var timeSiceLastShot = Time.time - lastShotTime;
-            if(timeSiceLastShot < shotRate)
-            {
-                return;
-            }
-
-            lastShotTime = Time.time;
-
-            _animator.SetBool("Shot Laser", true);
-            var laser = ObjectPool.SharedInstance.GetFirstPooledObject();
-            laser.layer = LayerMask.NameToLayer("Enemy Laser");
-            laser.transform.position = shootingPoint.transform.position;
-            laser.transform.rotation = shootingPoint.transform.rotation;
-            laser.SetActive(true);
-        }
+       if(weapon.ShootLaser("Enemy Laser", 0f))
+       {
+           _animator.SetBool("Shot Laser", true);
+       }
     }	
 
     void LookAt(Vector3 targetPosition)

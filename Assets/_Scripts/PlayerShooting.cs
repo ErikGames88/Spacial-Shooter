@@ -5,31 +5,19 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
-    [SerializeField]
-    [Tooltip("Since the laser is shot")]
-    private GameObject shootingPoint;
-
+    
     private Animator _animator;
 
-    [SerializeField]
-    private ParticleSystem fireEffect;
-
-    [SerializeField]
-    private AudioSource shotSFX;
-    
-    [SerializeField]
-    private AudioSource noShotSFX;
-    
-    private float fireRate = 0.5f;
-
-    private float lastShotTime;
-
     public int bulletsAmount;
+
+    public Weapon weapon;
+
+    /*[SerializeField]
+    private AudioSource noShotSFX;*/
 
     void Awake()
     {
         _animator = GetComponent<Animator>();
-        
     }
 
     void Update()
@@ -38,22 +26,18 @@ public class PlayerShooting : MonoBehaviour
         {
             _animator.SetBool("Shot Laser", true);
 
-            if( bulletsAmount > 0)
+            if(bulletsAmount > 0 && weapon.ShootLaser("Player Laser", 0.25f))
             {
-                var timeSinceLastShot = Time.time - lastShotTime;
-                if(timeSinceLastShot < fireRate)
+                bulletsAmount--;
+                if(bulletsAmount < 0)
                 {
-                    return;
+                    bulletsAmount = 0;
+                    //Instantiate(noShotSFX, transform.position, transform.rotation).GetComponent<AudioSource>().Play();
                 }
-               
-            
-                lastShotTime = Time.time;
-
-                Invoke("FireBullet", 0.15f);
             }
             else
             {
-                Instantiate(noShotSFX, transform.position, transform.rotation).GetComponent<AudioSource>().Play();
+                //Instantiate(noShotSFX, transform.position, transform.rotation).GetComponent<AudioSource>().Play();
             }
         }
         else
@@ -62,25 +46,4 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    void FireBullet()
-    {
-        // OBJECT POOLING (EXECUTION)
-        GameObject laser = ObjectPool.SharedInstance.GetFirstPooledObject(); 
-        // Getting the firs bullet of the List pooledObjects
-
-        laser.layer = LayerMask.NameToLayer("Player Laser");
-        laser.transform.position = shootingPoint.transform.position;
-        laser.transform.rotation = shootingPoint.transform.rotation;
-        laser.SetActive(true); // Enable the bullet to display
-
-        fireEffect.Play();
-        Instantiate(shotSFX, transform.position, transform.rotation).GetComponent<AudioSource>().Play();
-
-        bulletsAmount--;
-        if(bulletsAmount < 0)
-        {
-            bulletsAmount = 0;
-        }
-    }
-    
 }

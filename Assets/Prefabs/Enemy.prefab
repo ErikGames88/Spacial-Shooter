@@ -325,6 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7891145024121916167}
   - component: {fileID: 8752111759140889844}
+  - component: {fileID: 4978296650941873983}
   m_Layer: 7
   m_Name: AssaultRifle
   m_TagString: Untagged
@@ -457,6 +458,22 @@ SkinnedMeshRenderer:
     m_Center: {x: -34.27955, y: -49.079704, z: 120.48372}
     m_Extent: {x: 95.48148, y: 94.6697, z: 10.629513}
   m_DirtyAABB: 0
+--- !u!114 &4978296650941873983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303149914450179012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8407742734999468903afd2f69cc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shotRate: 2
+  shootingPoint: {fileID: 7075624447511250492}
+  fireEffect: {fileID: 2446913447930168780}
+  shotSFX: {fileID: 1605439004208359379, guid: 61f8a14e6800a67459c9967e07a8772e, type: 3}
 --- !u!1 &509831452047690705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,9 +1813,7 @@ MonoBehaviour:
   coreAttackDistance: 10
   playerAttackDistance: 6
   tolerance: 1.2
-  shotRate: 0.5
-  shootingPoint: {fileID: 7075624447511250492}
-  laserMaterial: {fileID: 2100000, guid: 4170684faac315c44a2e32634c2278f2, type: 2}
+  weapon: {fileID: 4978296650941873983}
 --- !u!1 &5284095769370342795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,7 +2416,8 @@ Transform:
   m_LocalPosition: {x: -109.7, y: 5.6, z: -10.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6218388751856772717}
   m_Father: {fileID: 357913297406374587}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &7231140234879428799
@@ -3227,4 +3243,84 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2541619415533399858, guid: 0c785acfd46218a49a0c10e760bb024b,
     type: 3}
   m_PrefabInstance: {fileID: 1584665366744365449}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7998821098456510543
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 673621966293710975}
+    m_Modifications:
+    - target: {fileID: 4129135616297489954, guid: 763acf80965948e44b7a86f66f8e10cb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129135616297489954, guid: 763acf80965948e44b7a86f66f8e10cb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129135616297489954, guid: 763acf80965948e44b7a86f66f8e10cb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129135616297489954, guid: 763acf80965948e44b7a86f66f8e10cb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129135616297489954, guid: 763acf80965948e44b7a86f66f8e10cb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129135616297489954, guid: 763acf80965948e44b7a86f66f8e10cb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129135616297489954, guid: 763acf80965948e44b7a86f66f8e10cb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129135616297489954, guid: 763acf80965948e44b7a86f66f8e10cb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129135616297489954, guid: 763acf80965948e44b7a86f66f8e10cb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129135616297489954, guid: 763acf80965948e44b7a86f66f8e10cb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6705776746633070546, guid: 763acf80965948e44b7a86f66f8e10cb,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire Effect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 763acf80965948e44b7a86f66f8e10cb, type: 3}
+--- !u!198 &2446913447930168780 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5689361044081177987, guid: 763acf80965948e44b7a86f66f8e10cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7998821098456510543}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6218388751856772717 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4129135616297489954, guid: 763acf80965948e44b7a86f66f8e10cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 7998821098456510543}
   m_PrefabAsset: {fileID: 0}

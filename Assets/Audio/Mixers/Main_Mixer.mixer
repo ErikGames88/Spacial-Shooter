@@ -35,6 +35,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -4982622272204808705}
+  - {fileID: 4703896021816412356}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -262,6 +263,48 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &4703896021816412356
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: b564ab4b2c9bc3e4780baa182814adfc
+  m_EffectName: SFX Reverb
+  m_MixLevel: 6699631dd7f5bbf4a98faa943b3b1e57
+  m_Parameters:
+  - m_ParameterName: Dry Level
+    m_GUID: a167e54a579519346b244dccc6fb3e20
+  - m_ParameterName: Room
+    m_GUID: ca9e22a705432fb4eb9866c691ffd582
+  - m_ParameterName: Room HF
+    m_GUID: 404c8db43110d3942b0de774635b771a
+  - m_ParameterName: Decay Time
+    m_GUID: 659b5ac621c19d642bd470185e5e9dc7
+  - m_ParameterName: Decay HF Ratio
+    m_GUID: 6ea12024c9a774a43b02977829bf1e56
+  - m_ParameterName: Reflections
+    m_GUID: 2cd4068d77a16d6408ad6fa5efe5b216
+  - m_ParameterName: Reflect Delay
+    m_GUID: e4ef80937f31a504dad7d418b3d48f98
+  - m_ParameterName: Reverb
+    m_GUID: 22fbe4e107d4a0e46afa4e4e0943b66a
+  - m_ParameterName: Reverb Delay
+    m_GUID: 8f19f4323502b9e4e9603fd9af8bcd56
+  - m_ParameterName: Diffusion
+    m_GUID: 01200e0602bb64248901ada1ed2808ef
+  - m_ParameterName: Density
+    m_GUID: 020e6720781673e49883fec8e7e78bbd
+  - m_ParameterName: HF Reference
+    m_GUID: f5ee552fee67fea4ca6bbddfaa81158e
+  - m_ParameterName: Room LF
+    m_GUID: a4284da9c5f0865408bd17392712cd26
+  - m_ParameterName: LF Reference
+    m_GUID: ada998cb4558bf14d8bd11f7a90bd7e9
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &5476293819648629097
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -337,37 +380,50 @@ AudioMixerSnapshotController:
   m_SnapshotID: ad152f0709dae164e84ee13a003c2a1c
   m_FloatValues:
     e3e16e0000f17ad4fb650833c58d6bf4: 0.84
+    22fbe4e107d4a0e46afa4e4e0943b66a: -2971
+    8f19f4323502b9e4e9603fd9af8bcd56: 0.0453
     ab6106925b9d5bc419bc9be92dbb56df: 0.1
     41b047b262cb22b4995b88dfe93301cf: 0.4
     44ee07c2a2064d94db386f0be6a3bc8d: 148
     c9f057d24ae9e69479359f421a45da6d: 6.1
+    e4ef80937f31a504dad7d418b3d48f98: 0.105
+    6ea12024c9a774a43b02977829bf1e56: 0.66
+    404c8db43110d3942b0de774635b771a: -1713
     4d5157e44ab216d46babce1ce78ad1f6: 0
     f7e4f5659e540dd4f8fbe5114b35ebf4: -3711
     905e5a9572acbb14dbfd32f8fe82f60d: 0.1
     e407e8d535751cb41a9006038571ccf5: 0.1
+    01200e0602bb64248901ada1ed2808ef: 62.8
     f4a31d664d01ec74aba68f4d48052a08: -30.032864
+    659b5ac621c19d642bd470185e5e9dc7: 2.6
     26b6b207f6331124eb8e097889a18d02: -4353
     076f5a376aeb60c4995237b5625df1b3: 0.78
     077f1357c53a8bf46a96da12329062d5: 1.69
     b4d36677c98148a40ae878ab87cadb77: 1014
     b5992d9742f89354b90736bd1ceed9dd: -5187
+    ca9e22a705432fb4eb9866c691ffd582: -8056
     e01d21f74f05b5e4b862dcbc403c0808: 0.066
     0756d14896e8d4746a9d10fa31c65c71: 1
     274ae58992cc30f4283e9fe684591954: 135
     76d5f9a98ecef7e419e80aee6d63e547: -50
+    a4284da9c5f0865408bd17392712cd26: -4559
+    a167e54a579519346b244dccc6fb3e20: -949
     06ef88ba5b9d48e418c26b91d60e006b: 0
     b15155caea09ddb449aaaa943dfd35f1: 51
     4318900b694f06849805c1a02a76a719: 0
     004c11bb2f61d07448f8c794ca7386aa: -15.066174
+    ada998cb4558bf14d8bd11f7a90bd7e9: 363
     01995cfb2162dc14a8c0c2b3db9b0197: 0.51
     1213493cca326444594a7577a58602ca: -6684
     e27cea3cae8cb6b4cbdafcbb649c8415: -2032
+    2cd4068d77a16d6408ad6fa5efe5b216: -7146
     12c7bf9d303c3cb43afdce40cf0ecf7b: 3.41
     47cf440ef19e563418e60d0736c024fc: 0.39
     084a2cae3a0a1514ebff45ffa33d6415: 0.99
     14e1baded4d6991408450b70ef6bc642: 33
     e4d026fedc04b7d40ad30bb85fa823df: 0.78
     c840142f3dd50824783331be2519aa33: 5.8
+    f5ee552fee67fea4ca6bbddfaa81158e: 2260
     1957323fab2826c4aaed1ac38a12eef2: 5838
     f4cc623f6de5a6b4cad2d0f6c3609d60: 0.054
     87d9b08fc77ef15428b809276874d853: 256

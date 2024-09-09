@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
@@ -10,6 +11,10 @@ public class Pause : MonoBehaviour
 
     [SerializeField]
     private Button exitButton;
+
+    [SerializeField]
+    private AudioMixerSnapshot pauseSnapshot, gameSnapshot;
+
     
     void Awake()
     {
@@ -28,6 +33,8 @@ public class Pause : MonoBehaviour
 
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
+
+            pauseSnapshot.TransitionTo(0.2f);
         }
     }
 
@@ -38,6 +45,8 @@ public class Pause : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        gameSnapshot.TransitionTo(0.2f);
     }
 
     private void ExitGame()

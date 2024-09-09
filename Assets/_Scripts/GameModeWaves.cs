@@ -34,10 +34,7 @@ public class GameModeWaves : MonoBehaviour
     }
 
     void CheckLoseCondition()
-    {
-        Animator anim = GetComponent<Animator>();
-        anim.SetTrigger("Play Die");
-
+    {  
         SceneManager.LoadScene("Lose Scene", LoadSceneMode.Single);
     }
 
@@ -61,7 +58,7 @@ public class GameModeWaves : MonoBehaviour
         var lowTime = PlayerPrefs.GetFloat("Low Time", 999999.0f);
         if(actualTime < lowTime)
         {
-            PlayerPrefs.SetFloat("Low Time", lowTime);
+            PlayerPrefs.SetFloat("Low Time", actualTime);
         }
     }
     
