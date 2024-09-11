@@ -44,13 +44,12 @@ public class PlayerMovement : MonoBehaviour
         
         float angle = rotationSpeed * Time.deltaTime;
         float cameraHorizontal = Input.GetAxis("Camera Horizontal");
-        //float cameraVertical = Input.GetAxis("Camera Vertical");
+        float cameraVertical = Input.GetAxis("Camera Vertical");
         //transform.Rotate(0, cameraHorizontal * angle, 0);
         
         // ROTATION FORCE (TORQUE)
         _rigidbody.AddRelativeTorque(0, cameraHorizontal * angle, 0);
-
-
+        
         _animator.SetFloat("Velocity", _rigidbody.velocity.magnitude);
         
         /*_animator.SetFloat("Move X", horizontal);

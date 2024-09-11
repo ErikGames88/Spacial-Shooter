@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Core
+  - Add Player Life
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Player Laser
   - Enemy Laser
   - Core
-  - 
+  - Obstacles
   - 
   - 
   - 

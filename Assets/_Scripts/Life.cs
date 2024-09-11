@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public class Life : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class Life : MonoBehaviour
 
     [Tooltip("Related death event")]
     public UnityEvent onDeath;
+
     
     public float Amount
     {
@@ -39,4 +42,5 @@ public class Life : MonoBehaviour
     {
         amount = maximumLife;
     }
+
 }    
