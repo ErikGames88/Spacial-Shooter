@@ -17,9 +17,6 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     private AudioSource shotSFX;
 
-    /*[SerializeField]
-    private AudioSource noShotSFX;*/
-
     private string layerName;
 
     public bool ShootLaser(string layerName, float delay)

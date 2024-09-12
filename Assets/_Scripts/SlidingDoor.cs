@@ -11,7 +11,7 @@ public class SlidingDoor : MonoBehaviour
 
     private Vector3 closedPosition;
     private Vector3 openPosition;
-    private bool isPlayerNear = false;
+    private bool isPlayerNear;
 
     public float timeToTrigger = 0.5f; 
 

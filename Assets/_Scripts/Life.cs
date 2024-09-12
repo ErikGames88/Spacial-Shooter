@@ -38,9 +38,19 @@ public class Life : MonoBehaviour
         set => maximumLife = value;
     }
 
+
+    
+
     void Awake()
     {
         amount = maximumLife;
+    }
+
+    
+    public void ApplyHealth(float amount)
+    {
+        Amount += amount;
+        Debug.Log("Nueva vida: " + Amount);
     }
 
 }    

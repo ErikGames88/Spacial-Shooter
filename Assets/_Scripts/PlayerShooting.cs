@@ -12,9 +12,7 @@ public class PlayerShooting : MonoBehaviour
 
     public Weapon weapon;
 
-    /*[SerializeField]
-    private AudioSource noShotSFX;*/
-
+   
     void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -32,12 +30,7 @@ public class PlayerShooting : MonoBehaviour
                 if(bulletsAmount < 0)
                 {
                     bulletsAmount = 0;
-                    //Instantiate(noShotSFX, transform.position, transform.rotation).GetComponent<AudioSource>().Play();
                 }
-            }
-            else
-            {
-                //Instantiate(noShotSFX, transform.position, transform.rotation).GetComponent<AudioSource>().Play();
             }
         }
         else
