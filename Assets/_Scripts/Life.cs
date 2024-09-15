@@ -23,7 +23,7 @@ public class Life : MonoBehaviour
         get => amount;
         set 
         {
-            amount = value;
+            amount = Mathf.Clamp(value, 0, maximumLife);
             
             if(amount <= 0)
             {
@@ -46,11 +46,40 @@ public class Life : MonoBehaviour
         amount = maximumLife;
     }
 
-    
-    public void ApplyHealth(float amount)
+    void Update() // TODO ESTO CHAT GPT
     {
-        Amount += amount;
-        Debug.Log("Nueva vida: " + Amount);
+        // Verificar el estado actual de la vida y asegurarse de que no se está bloqueando el daño
+        if (Amount <= 0)
+        {
+            Debug.Log("Core is destroyed or not active.");
+        }
+    }
+
+    
+    // TODO A PARTIR DE AQUÍ PARA ABAJO CHAT GPT, POSIBLE BORRAR
+    public void ApplyDamage(float damage)
+    {
+        if (!gameObject.activeInHierarchy)
+        {
+            Debug.Log("Core is not active.");
+            return; // No aplicar daño si el objeto no está activo
+        } // OTRO IF DE CHAT GPT
+
+        if (Amount <= 0)
+        {
+            Debug.Log("Core already destroyed.");
+            return; // No aplicar daño si la vida ya está en 0
+        }
+
+        Amount -= damage;
+        Debug.Log("Core current health: " + Amount);
+
+        if (Amount <= 0)
+        {
+            Amount = 0;
+            Debug.Log("Core is destroyed");
+            Destroy(gameObject); // O cualquier lógica para manejar la destrucción
+        }
     }
 
 }    

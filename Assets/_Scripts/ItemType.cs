@@ -12,81 +12,95 @@ public class ItemType : MonoBehaviour
 
 
     private int amountPlayerLife = 50;
-    private int amountCoreLife = 500;
+    private int amountCoreLife = 100;
+    private int ammountAmmunition;
+    int scoreToAdd = 1000;
 
 
+    void Start()
+    {
+        ammountAmmunition = Random.Range(10, 20);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        // Verifica si el objeto que colisiona es el Player
         if (other.CompareTag("Player"))
         {
-            // Accede al componente Life del Player
-            Life playerLife = other.GetComponent<Life>();
-
-            if (playerLife != null)
+            // Dependiendo del tipo de item, aplicar efectos correspondientes
+            switch (itemType)
             {
-                // Aplica el efecto basado en el tipo de item
-                switch (itemType)
-                {
-                    case Items.PlayerLife:
-                        playerLife.ApplyHealth(amountPlayerLife); // Aplica vida al Player
-                        Debug.Log("Vida añadida al Player.");
-                        break;
+                case Items.PlayerLife:
+                    ApplyLife(other.gameObject);
+                    break;
 
-                    case Items.CoreLife:
-                        // Encuentra el GameObject de la Base y accede a su componente Life
-                        GameObject coreObject = GameObject.FindGameObjectWithTag("Core");
-                        if (coreObject != null)
-                        {
-                            Life coreLife = coreObject.GetComponent<Life>();
-                            if (coreLife != null)
-                            {
-                                coreLife.ApplyHealth(amountCoreLife); // Aplica vida a la Base
-                                Debug.Log("Vida añadida a la Base.");
-                            }
-                        }
-                        break;
+                case Items.CoreLife:
+                    ApplyCoreLife();
+                    break;
 
-                    // Añadir casos para Ammo y Score si es necesario
-                }
+                case Items.Score:
+                    ApplyScore(other);
+                    break;
 
-                // Destruye el objeto item después de aplicar el efecto
-                Destroy(gameObject);
+                case Items.Ammunition:
+                    ApplyAmmunition(other);
+                    break;
+            }
+
+            // Destruir el item después de aplicar el efecto
+            Destroy(gameObject);
+        }
+    }
+
+    private void ApplyLife(GameObject player)
+    {
+        Life playerLife = player.GetComponent<Life>();
+        if (playerLife != null)
+        {
+            playerLife.Amount += amountPlayerLife; // Ajusta la cantidad de vida que se añade
+        }
+    }
+
+    private void ApplyCoreLife()
+    {
+        GameObject core = GameObject.FindGameObjectWithTag("Core");
+        if (core != null)
+        {
+            Life coreLife = core.GetComponent<Life>();
+            if (coreLife != null)
+            {
+                coreLife.Amount += amountCoreLife; // Ajusta la cantidad de vida que se añade
             }
         }
     }
 
-    /*private int amountPlayerLife = 50;
-    private int amountCoreLife = 500;
-
-    private void OnTriggerEnter(Collider other)
+    private void ApplyAmmunition(Collider player)
     {
-        if (itemType == Items.PlayerLife && other.CompareTag("Player"))
-        {   
-            
-            Life playerLife = gameObject.GetComponent<Life>();
-
-            if (playerLife != null)
-            {
-                playerLife.AddPlayerLife(amountPlayerLife); 
-                Destroy(gameObject);
-            }
-        }
-        else if (itemType == Items.CoreLife && other.CompareTag("Player"))
+        PlayerShooting playerShooting = player.GetComponent<PlayerShooting>();
+        if (playerShooting != null)
         {
-            Life coreLife = gameObject.GetComponent<Life>();
-
-            
-            if (coreLife != null)
-            {
-                coreLife.AddCoreLife(amountCoreLife); 
-                Destroy(gameObject);
-            }
+            playerShooting.bulletsAmount += ammountAmmunition; // Ajustar la cantidad de munición según sea necesario
         }
-        
-    }*/
-
+    }
     
+    void ApplyScore(Collider player)
+    {
+    // Obtener la instancia del ScoreManager
+        ScoreManager scoreManager = ScoreManager.SharedInstance;
+
+        // Verificar si la instancia del ScoreManager existe
+        if (scoreManager != null)
+        {
+            // Añadir una cantidad de puntuación específica (ajustar según sea necesario)
+             // Ajusta el valor según tus necesidades
+            scoreManager.Amount += scoreToAdd;
+
+            // Opcional: Mostrar el nuevo puntaje en la consola para depuración
+            Debug.Log("Player's new score: " + scoreManager.Amount);
+        }
+        else
+        {
+            Debug.LogWarning("ScoreManager instance not found!");
+        }
+    }
 }
 

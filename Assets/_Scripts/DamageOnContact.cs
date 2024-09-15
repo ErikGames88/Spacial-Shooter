@@ -11,20 +11,17 @@ public class DamageOnContact : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.name);
-        //Destroy(gameObject); // Not doing it, using the pool
-        gameObject.SetActive(false); // Desable the object as in the pool, without destroying it
-
-        /*if(other.CompareTag("Enemy") || other.CompareTag("Player")) 
-        {
-            Destroy(other.gameObject);
-        }*/
-
+        //gameObject.SetActive(false); Codigo original
+        
         Life life = other.GetComponent<Life>();
 
         if(life != null)
         {
-            life.Amount -= damage; // life.amount = life.amount - damage;
+            //life.Amount -= damage;   Codigo original
+            Debug.Log("Applying damage to: " + other.name); // CHAT GPT
+            life.ApplyDamage(damage); // CHAT GPT
         }
+
+        gameObject.SetActive(false); //CHAT GPT
     }
 }
