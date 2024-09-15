@@ -16,17 +16,19 @@ public class ItemType : MonoBehaviour
     private int ammountAmmunition;
     int scoreToAdd = 1000;
 
+    PowerUp _powerUp;
+
 
     void Start()
     {
         ammountAmmunition = Random.Range(10, 20);
+        _powerUp = GetComponent<PowerUp>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            // Dependiendo del tipo de item, aplicar efectos correspondientes
             switch (itemType)
             {
                 case Items.PlayerLife:
@@ -44,10 +46,29 @@ public class ItemType : MonoBehaviour
                 case Items.Ammunition:
                     ApplyAmmunition(other);
                     break;
+
+                case Items.PowerUp:
+                    _powerUp.startPowerUp(other.gameObject);
+                    break;
+
+                default:
+                break;
             }
 
-            // Destruir el item después de aplicar el efecto
-            Destroy(gameObject);
+                Destroy(gameObject);
+            /*if (itemType != Items.PowerUp)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                gameObject.SetActive(false);
+                Collider itemCollider = GetComponent<Collider>();
+                if (itemCollider != null)
+                {
+                    itemCollider.enabled = false;
+                }
+            }*/
         }
     }
 
@@ -56,7 +77,7 @@ public class ItemType : MonoBehaviour
         Life playerLife = player.GetComponent<Life>();
         if (playerLife != null)
         {
-            playerLife.Amount += amountPlayerLife; // Ajusta la cantidad de vida que se añade
+            playerLife.Amount += amountPlayerLife; 
         }
     }
 
@@ -68,7 +89,7 @@ public class ItemType : MonoBehaviour
             Life coreLife = core.GetComponent<Life>();
             if (coreLife != null)
             {
-                coreLife.Amount += amountCoreLife; // Ajusta la cantidad de vida que se añade
+                coreLife.Amount += amountCoreLife; 
             }
         }
     }
@@ -78,29 +99,66 @@ public class ItemType : MonoBehaviour
         PlayerShooting playerShooting = player.GetComponent<PlayerShooting>();
         if (playerShooting != null)
         {
-            playerShooting.bulletsAmount += ammountAmmunition; // Ajustar la cantidad de munición según sea necesario
+            playerShooting.bulletsAmount += ammountAmmunition; 
         }
     }
     
     void ApplyScore(Collider player)
     {
-    // Obtener la instancia del ScoreManager
+        
         ScoreManager scoreManager = ScoreManager.SharedInstance;
 
-        // Verificar si la instancia del ScoreManager existe
+        
         if (scoreManager != null)
         {
-            // Añadir una cantidad de puntuación específica (ajustar según sea necesario)
-             // Ajusta el valor según tus necesidades
             scoreManager.Amount += scoreToAdd;
-
-            // Opcional: Mostrar el nuevo puntaje en la consola para depuración
-            Debug.Log("Player's new score: " + scoreManager.Amount);
         }
         else
         {
             Debug.LogWarning("ScoreManager instance not found!");
         }
     }
+
+    /*private void ApplyPowerUp(Collider player)
+    {
+       PlayerShooting playerShooting = player.GetComponent<PlayerShooting>();
+        Life playerLife = player.GetComponent<Life>();
+
+        if (playerShooting != null && playerLife != null)
+        {
+            Debug.Log("Applying Power-up.");
+            // Activar munición infinita e invulnerabilidad
+            playerShooting.hasInfiniteAmmunition = true;
+            playerLife.isInvulnerable = true;
+
+            float powerUpDuration = 10f;
+            // Desactivar el power-up después de un tiempo
+            Debug.Log("Power-up coroutine started.");
+            StartCoroutine(DisablePowerUp(playerShooting, playerLife, powerUpDuration));
+        }
+        else
+        {
+            Debug.LogWarning("PlayerShooting or Life component not found.");
+        }
+        
+    }
+
+    private IEnumerator DisablePowerUp(PlayerShooting playerShooting, Life playerLife, float duration)
+    {
+         Debug.Log("Waiting " + duration + " seconds to deactivate power-up...");
+        yield return new WaitForSeconds(duration);
+
+        // Desactivar munición infinita e invulnerabilidad
+        playerShooting.hasInfiniteAmmunition = false;
+        playerLife.isInvulnerable = false;
+        
+        // Opcional: Mostrar mensaje de depuración
+        Debug.Log("Power-up deactivated.");
+
+        // Destruir el PowerUp después de que el efecto haya terminado
+        Destroy(gameObject);
+    }*/
+
+    
 }
 

@@ -12,6 +12,8 @@ public class PlayerShooting : MonoBehaviour
 
     public Weapon weapon;
 
+    public bool hasInfiniteAmmunition;
+
    
     void Awake()
     {
@@ -24,13 +26,21 @@ public class PlayerShooting : MonoBehaviour
         {
             _animator.SetBool("Shot Laser", true);
 
-            if(bulletsAmount > 0 && weapon.ShootLaser("Player Laser", 0.25f))
+            if(bulletsAmount > 0 || hasInfiniteAmmunition) 
             {
-                bulletsAmount--;
-                if(bulletsAmount < 0)
+                if(weapon.ShootLaser("Player Laser", 0.25f))
                 {
-                    bulletsAmount = 0;
+                    if(!hasInfiniteAmmunition)
+                    {
+                        bulletsAmount--;
+
+                        if(bulletsAmount < 0)
+                        {
+                            bulletsAmount = 0;
+                        }
+                    }
                 }
+                
             }
         }
         else

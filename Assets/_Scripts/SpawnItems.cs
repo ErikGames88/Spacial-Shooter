@@ -25,14 +25,14 @@ public class SpawnItems : MonoBehaviour
         InvokeRepeating("SpawnRandomObject", 2f, spawnInterval);
     }
 
-    IEnumerator SpawnObjects()
+    /*IEnumerator SpawnObjects()
     {
         while (true)
         {
             SpawnRandomObject();
             yield return new WaitForSeconds(spawnInterval);
         }
-    }
+    }*/
 
     void SpawnRandomObject()
     {

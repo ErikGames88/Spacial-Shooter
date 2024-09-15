@@ -313,6 +313,74 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
+--- !u!1001 &41550180
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4307112407868005380, guid: bd260e537386ca54c9f18d8aeba3bbcd,
+        type: 3}
+      propertyPath: m_Name
+      value: Add Power Up
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293224855445481165, guid: bd260e537386ca54c9f18d8aeba3bbcd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 58.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293224855445481165, guid: bd260e537386ca54c9f18d8aeba3bbcd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 54.389996
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293224855445481165, guid: bd260e537386ca54c9f18d8aeba3bbcd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 68.049164
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293224855445481165, guid: bd260e537386ca54c9f18d8aeba3bbcd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293224855445481165, guid: bd260e537386ca54c9f18d8aeba3bbcd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293224855445481165, guid: bd260e537386ca54c9f18d8aeba3bbcd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293224855445481165, guid: bd260e537386ca54c9f18d8aeba3bbcd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293224855445481165, guid: bd260e537386ca54c9f18d8aeba3bbcd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293224855445481165, guid: bd260e537386ca54c9f18d8aeba3bbcd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5293224855445481165, guid: bd260e537386ca54c9f18d8aeba3bbcd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bd260e537386ca54c9f18d8aeba3bbcd, type: 3}
 --- !u!1 &97177082
 GameObject:
   m_ObjectHideFlags: 0
@@ -11978,6 +12046,50 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &776700917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 776700918}
+  - component: {fileID: 776700919}
+  m_Layer: 0
+  m_Name: PowerUp Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &776700918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776700917}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &776700919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776700917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3157365106c54744c9f35b237e88602b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &813050269
 GameObject:
   m_ObjectHideFlags: 0
@@ -25779,3 +25891,5 @@ SceneRoots:
   - {fileID: 952490112}
   - {fileID: 535681024}
   - {fileID: 1074625292}
+  - {fileID: 41550180}
+  - {fileID: 776700918}

@@ -18,7 +18,7 @@ public class DamageOnContact : MonoBehaviour
         if(life != null)
         {
             //life.Amount -= damage;   Codigo original
-            Debug.Log("Applying damage to: " + other.name); // CHAT GPT
+            //Debug.Log("Applying damage to: " + other.name); // CHAT GPT
             life.ApplyDamage(damage); // CHAT GPT
         }
 
