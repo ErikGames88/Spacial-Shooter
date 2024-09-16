@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameOver : MonoBehaviour
@@ -9,6 +10,14 @@ public class GameOver : MonoBehaviour
     public TextMeshProUGUI actualScore, actualTime, bestScore, bestTime;
 
     public bool playerHasWon;
+
+    [SerializeField]
+    private Button exitButton;
+
+    void Awake()
+    {
+        exitButton.onClick.AddListener(ExitGame);
+    }
 
     void Start()
     {
@@ -27,5 +36,11 @@ public class GameOver : MonoBehaviour
     public void ReloadLevel()
     {
         SceneManager.LoadScene("Level 1");
+    }
+
+    public void ExitGame()
+    {
+        print("EXECUTION COMPLETED");
+        Application.Quit();
     }
 }

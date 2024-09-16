@@ -65,24 +65,25 @@ public class Life : MonoBehaviour
     {
         if (!gameObject.activeInHierarchy)
         {
-            //Debug.Log("Core is not active.");
-            return; // No aplicar daño si el objeto no está activo
-        } // OTRO IF DE CHAT GPT
+            //Debug.Log("Object inactive, not applying damage.");
+            return;
+        }
 
         if (Amount <= 0)
         {
-            //Debug.Log("Core already destroyed.");
-            return; // No aplicar daño si la vida ya está en 0
+            //Debug.Log("Object already destroyed, not applying damage.");
+            return;
         }
 
+        //Debug.Log("Applying damage: " + damage);
         Amount -= damage;
-        //Debug.Log("Core current health: " + Amount);
+        //Debug.Log("New health: " + Amount);
 
         if (Amount <= 0)
         {
             Amount = 0;
-            //Debug.Log("Core is destroyed");
-            Destroy(gameObject); // O cualquier lógica para manejar la destrucción
+            //Debug.Log("Object destroyed");
+            Destroy(gameObject); 
         }
     }
 

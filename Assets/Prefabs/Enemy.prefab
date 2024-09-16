@@ -2654,6 +2654,7 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  isInvulnerable: 0
 --- !u!114 &7611367754156115358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2985,8 +2986,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7482667652216324306, guid: 34e35dda141fe2548b00b83ae8e1ca98,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
