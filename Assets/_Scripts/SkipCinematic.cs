@@ -7,16 +7,21 @@ using UnityEngine.UI;
 
 public class SkipCinematic : MonoBehaviour
 {
-    public PlayableDirector playableDirector; // Asigna tu PlayableDirector aquí
-    public GameObject skipButton; // Asigna el botón de saltar aquí
-    public GameObject skipImage;  // Asigna la imagen de instrucciones aquí
-
-    private bool cinematicFinished = false;
+    public PlayableDirector playableDirector; 
+    public GameObject skipPanel; // Asigna el panel aquí
+    public GameObject player;
+    
+    public List<WaveSpawner> waveSpawners;
+    private bool cinematicFinished;
 
     void Start()
     {
-        // Desactivar al jugador al inicio para replicar el comportamiento del Activation Track
-        GameObject player = GameObject.FindWithTag("Player");
+        // Si no has asignado el Player en el Editor, intenta buscarlo por Tag
+        if (player == null)
+        {
+            player = GameObject.FindWithTag("Player");
+        }
+
         if (player != null)
         {
             player.SetActive(false); // Desactiva el Player al inicio
@@ -26,8 +31,23 @@ public class SkipCinematic : MonoBehaviour
             Debug.LogError("Player not found in the scene.");
         }
 
-        // Iniciar la corrutina para verificar cuando termine la cinemática
-        StartCoroutine(WaitForCinematicToEnd());
+        // Desactivar los WaveSpawners al inicio
+        foreach (var spawner in waveSpawners)
+        {
+            spawner.gameObject.SetActive(false);
+        }
+
+        // Mostrar el panel de skip durante la cinemática
+        skipPanel.SetActive(true);
+    }
+
+    void Update()
+    {
+        // Escuchar la tecla 'S' para saltar la cinemática
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            SkipCinematics();
+        }
     }
 
     // Método llamado cuando el botón para saltar la cinemática es presionado
@@ -39,7 +59,6 @@ public class SkipCinematic : MonoBehaviour
             playableDirector.Stop();
 
             // Activar al jugador manualmente
-            GameObject player = GameObject.FindWithTag("Player");
             if (player != null)
             {
                 player.SetActive(true); // Activa al jugador
@@ -62,9 +81,14 @@ public class SkipCinematic : MonoBehaviour
             // Marcar la cinemática como finalizada
             cinematicFinished = true;
 
-            // Ocultar el botón de saltar la cinemática
-            skipButton.SetActive(false);
-            skipImage.SetActive(false);
+            // Ocultar el panel de saltar la cinemática
+            skipPanel.SetActive(false);
+
+            // Activar los WaveSpawners
+            foreach (var spawner in waveSpawners)
+            {
+                spawner.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -94,19 +118,9 @@ public class SkipCinematic : MonoBehaviour
         }
     }
 
-    // Método que espera a que la cinemática termine
-    private IEnumerator WaitForCinematicToEnd()
-    {
-        // Esperar a que la duración del PlayableDirector llegue a su fin
-        yield return new WaitUntil(() => playableDirector.state != PlayState.Playing);
-
-        OnCinematicFinished();
-    }
-
     // Método llamado cuando la cinemática termina naturalmente (sin saltarla)
-    private void OnCinematicFinished()
+    private void OnCinematicFinished(PlayableDirector director)
     {
-        GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
             player.SetActive(true); // Activar al jugador al terminar la cinemática
@@ -118,5 +132,22 @@ public class SkipCinematic : MonoBehaviour
 
         // Asegurarse de que la cámara de gameplay esté activa
         SwitchToGameplayCamera();
+
+        // Activar los WaveSpawners
+        foreach (var spawner in waveSpawners)
+        {
+            spawner.gameObject.SetActive(true);
+        }
+    }
+
+    // Si usas el evento del PlayableDirector para detectar cuando termina la cinemática
+    private void OnEnable()
+    {
+        playableDirector.stopped += OnCinematicFinished; // Vincular evento al PlayableDirector
+    }
+
+    private void OnDisable()
+    {
+        playableDirector.stopped -= OnCinematicFinished; // Desvincular evento al desactivar el objeto
     }
 }

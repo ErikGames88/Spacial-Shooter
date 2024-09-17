@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
 {
     private NavMeshAgent _agent;
 
-    public enum EnemyState {GoToCore, AttackCore, ChasePlayer, AttackPlayer}
+    public enum EnemyState {GoToCore, AttackCore, ChasePlayer, AttackPlayer, Death}
 
     public EnemyState currentState; 
 

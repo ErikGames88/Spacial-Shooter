@@ -17,12 +17,14 @@ public class ItemType : MonoBehaviour
     int scoreToAdd = 1000;
 
     PowerUp _powerUp;
+    GameObject powerUpManager;
 
 
     void Start()
     {
         ammountAmmunition = Random.Range(10, 20);
-        _powerUp = GetComponent<PowerUp>();
+        powerUpManager = GameObject.Find("PowerUpManager");
+        _powerUp = powerUpManager.GetComponent<PowerUp>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,6 +50,7 @@ public class ItemType : MonoBehaviour
                     break;
 
                 case Items.PowerUp:
+                    _powerUp.duration = 5f;
                     _powerUp.startPowerUp(other.gameObject);
                     break;
 

@@ -18,6 +18,8 @@ public class Life : MonoBehaviour
     public UnityEvent onDeath;
 
     public bool isInvulnerable;
+
+    Enemy _enemy;
     
     public float Amount
     {
@@ -48,17 +50,10 @@ public class Life : MonoBehaviour
     void Awake()
     {
         amount = maximumLife;
+        _enemy = GetComponent<Enemy>();
     }
 
-    void Update() // TODO ESTO CHAT GPT
-    {
-        // Verificar el estado actual de la vida y asegurarse de que no se está bloqueando el daño
-        if (Amount <= 0)
-        {
-            //Debug.Log("Core is destroyed or not active.");
-        }
-    }
-
+    
     
     // TODO A PARTIR DE AQUÍ PARA ABAJO CHAT GPT, POSIBLE BORRAR
     public void ApplyDamage(float damage)
@@ -83,7 +78,7 @@ public class Life : MonoBehaviour
         {
             Amount = 0;
             //Debug.Log("Object destroyed");
-            Destroy(gameObject); 
+            _enemy.DestroyEnemy();
         }
     }
 

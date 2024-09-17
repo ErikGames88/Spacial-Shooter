@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5646348622672006546}
   - component: {fileID: -4564208345286193067}
   - component: {fileID: 955783359637984209}
-  - component: {fileID: -7824355585884662669}
   - component: {fileID: 2168611682360374643}
   m_Layer: 0
   m_Name: Add Power Up
@@ -122,19 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 60
---- !u!114 &-7824355585884662669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4307112407868005380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 872b0c8d69f184548916507d21f890b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 10
 --- !u!114 &2168611682360374643
 MonoBehaviour:
   m_ObjectHideFlags: 0

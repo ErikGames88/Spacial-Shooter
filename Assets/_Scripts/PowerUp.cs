@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public float duration = 2f; // Duración del PowerUp en segundos
+    public float duration; // Duración del PowerUp en segundos
+    GameObject player;
 
     public void startPowerUp(GameObject other)
     {
-        ApplyPowerUp(other);
+        player = other;
+        ApplyPowerUp(player, true);
 
         // Verifica si el GameObject sigue activo antes de iniciar la corrutina
         if (gameObject.activeInHierarchy)
@@ -22,19 +24,19 @@ public class PowerUp : MonoBehaviour
         }
     }
 
-    private void ApplyPowerUp(GameObject player)
+    private void ApplyPowerUp(GameObject player, bool apply)
     {
         PlayerShooting playerShooting = player.GetComponent<PlayerShooting>();
         Life playerLife = player.GetComponent<Life>();
 
         if (playerShooting != null && playerLife != null)
         {
-            // Activar munición infinita e invulnerabilidad
-            playerShooting.hasInfiniteAmmunition = true;
-            playerLife.isInvulnerable = true;
+            // Activar/desactivar munición infinita e invulnerabilidad
+            playerShooting.hasInfiniteAmmunition = apply;
+            playerLife.isInvulnerable = apply;
 
             // Mostrar mensaje de depuración
-            Debug.Log("Power-up applied: Infinite ammunition and invulnerability activated.");
+            // Debug.Log("Power-up applied: Infinite ammunition and invulnerability activated.");
         }
         else
         {
@@ -49,6 +51,6 @@ public class PowerUp : MonoBehaviour
 
         // Restaurar el PowerUp y desactivarlo después de la duración
         Debug.Log("Power-up deactivated.");
-        Destroy(gameObject);
+        ApplyPowerUp(player, false);
     }
 }
