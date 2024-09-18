@@ -15,6 +15,7 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField]
     [Tooltip("Time between each enemy is generated")]
     private float spawnRate;
+
     
     void Start()
     {
@@ -32,7 +33,6 @@ public class WaveSpawner : MonoBehaviour
         /*float rangeEnemy = Random.Range(-45.0f, 45.0f);
         Quaternion quaternion = Quaternion.Euler(0, transform.rotation.eulerAngles.y + rangeEnemy, 0);*/
         Instantiate(prefab, transform.position, transform.rotation);
-        
     }
 
     void EndWave()

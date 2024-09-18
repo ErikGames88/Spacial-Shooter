@@ -97,16 +97,16 @@ Material:
     m_Floats:
     - _Ambient: 0.47
     - _Bevel: 1
-    - _BevelClamp: 0.47
-    - _BevelOffset: -0.45
-    - _BevelRoundness: 0.45
-    - _BevelWidth: 0.22
+    - _BevelClamp: 0.32
+    - _BevelOffset: -0.24
+    - _BevelRoundness: 0.5
+    - _BevelWidth: 0.29
     - _BumpFace: 0
     - _BumpOutline: 0
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0.57
-    - _FaceDilate: 0.74
+    - _FaceDilate: 0.76
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -114,18 +114,18 @@ Material:
     - _GlowOuter: 0.05
     - _GlowPower: 0.75
     - _GradientScale: 6
-    - _LightAngle: 2.6
+    - _LightAngle: 0.78
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
-    - _OutlineSoftness: 0.043
+    - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.774
+    - _OutlineWidth: 0.45
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 8.4
-    - _ScaleRatioA: 0.47769177
-    - _ScaleRatioB: 0.0604167
-    - _ScaleRatioC: 0.042848725
+    - _ScaleRatioA: 0.5963029
+    - _ScaleRatioB: 0.04374997
+    - _ScaleRatioC: 0.028409071
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -141,7 +141,7 @@ Material:
     - _UnderlayDilate: 0.44
     - _UnderlayOffsetX: -0.04
     - _UnderlayOffsetY: -0.58
-    - _UnderlaySoftness: 0.39
+    - _UnderlaySoftness: 0.52
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
     - _WeightBold: 0.75
@@ -149,14 +149,14 @@ Material:
     m_Colors:
     - _ClipRect: {r: -32767, g: -32767, b: 32767, a: 32767}
     - _EnvMatrixRotation: {r: 0, g: 0, b: 0, a: 0}
-    - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FaceColor: {r: 1.6112549, g: 1.1482893, b: 3.5111163, a: 1}
     - _GlowColor: {r: 0, g: 1, b: 0, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
-    - _OutlineColor: {r: 0.9245283, g: 0.040702417, b: 0.040702417, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnderlayColor: {r: 0.5188679, g: 0.2235374, b: 0.40933374, a: 0.5}
+    - _SpecularColor: {r: 3.1543374, g: 2.792344, b: 13.661012, a: 1}
+    - _UnderlayColor: {r: 0.96658415, g: 0.3557734, b: 0.9753099, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
 MonoBehaviour:

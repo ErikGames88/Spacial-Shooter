@@ -7,147 +7,159 @@ using UnityEngine.UI;
 
 public class SkipCinematic : MonoBehaviour
 {
-    public PlayableDirector playableDirector; 
+    PlayableDirector playableDirector; 
     public GameObject skipPanel; // Asigna el panel aquí
     public GameObject player;
     
     public List<WaveSpawner> waveSpawners;
+
     private bool cinematicFinished;
+
+    public Canvas hiddeCanvas;
 
     void Start()
     {
-        // Si no has asignado el Player en el Editor, intenta buscarlo por Tag
+        // Asegurarse de que el Player está asignado
         if (player == null)
         {
             player = GameObject.FindWithTag("Player");
         }
 
-        if (player != null)
+        if (player == null)
         {
-            player.SetActive(false); // Desactiva el Player al inicio
+            Debug.LogError("Player not found.");
         }
         else
         {
-            Debug.LogError("Player not found in the scene.");
+            player.SetActive(false); // Desactivar el Player al inicio
         }
 
-        // Desactivar los WaveSpawners al inicio
-        foreach (var spawner in waveSpawners)
+        // Asegurar la existencia de WaveSpawners
+        if (waveSpawners.Count == 0)
         {
-            spawner.gameObject.SetActive(false);
+            Debug.LogError("No WaveSpawners assigned.");
+        }
+        else
+        {
+            foreach (var spawner in waveSpawners)
+            {
+                if (spawner == null)
+                {
+                    Debug.LogError("A WaveSpawner is missing.");
+                }
+                else
+                {
+                    spawner.gameObject.SetActive(false); // Desactivar spawners al inicio
+                }
+            }
         }
 
-        // Mostrar el panel de skip durante la cinemática
-        skipPanel.SetActive(true);
+        // Mostrar el skipPanel
+        if (skipPanel != null)
+        {
+            skipPanel.SetActive(true); // Mostrar skipPanel al inicio
+        }
+
+        
+        if (hiddeCanvas != null)
+        {
+            hiddeCanvas.enabled = false; // Mostrar skipPanel al inicio
+        }
+
+        playableDirector = GameObject.Find("Director").GetComponent<PlayableDirector>();
+        if (playableDirector != null)
+        {
+            Debug.Log("DURATION: " + playableDirector.duration);
+            Debug.Log("TIME: " + playableDirector.time);
+            playableDirector.stopped += OnCinematicFinished;
+            // playableDirector.Stop();
+        }
     }
 
     void Update()
     {
-        // Escuchar la tecla 'S' para saltar la cinemática
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || playableDirector.time >= playableDirector.duration)
         {
             SkipCinematics();
         }
     }
 
-    // Método llamado cuando el botón para saltar la cinemática es presionado
     public void SkipCinematics()
     {
-        if (!cinematicFinished)
+        if (!cinematicFinished && playableDirector != null)
         {
-            // Detener la cinemática
-            playableDirector.Stop();
-
-            // Activar al jugador manualmente
-            if (player != null)
+            if (hiddeCanvas != null)
             {
-                player.SetActive(true); // Activa al jugador
-
-                // Activar el componente de movimiento del jugador, si existe
-                var movementComponent = player.GetComponent<PlayerMovement>(); // Asegúrate de cambiar 'PlayerMovement' por el nombre correcto
-                if (movementComponent != null)
-                {
-                    movementComponent.enabled = true;
-                }
+                hiddeCanvas.enabled = true; // Mostrar skipPanel al inicio
             }
-            else
-            {
-                Debug.LogError("Player not found when skipping cinematic.");
-            }
-
-            // Forzar la transición a la cámara del gameplay
-            SwitchToGameplayCamera();
-
-            // Marcar la cinemática como finalizada
-            cinematicFinished = true;
-
-            // Ocultar el panel de saltar la cinemática
-            skipPanel.SetActive(false);
-
-            // Activar los WaveSpawners
-            foreach (var spawner in waveSpawners)
-            {
-                spawner.gameObject.SetActive(true);
-            }
+            cinematicFinished = true; // Asegurar que sólo se salte una vez
+            playableDirector.Stop(); // Detener la cinemática
+            HandlePostCinematic(); // Manejar el post-cinemático
         }
     }
 
-    // Método para cambiar a la cámara de gameplay
-    private void SwitchToGameplayCamera()
+    private void HandlePostCinematic()
     {
-        // Encontrar la cámara de gameplay (Virtual Camera Main)
-        var gameplayCamera = GameObject.Find("Virtual Camera (Main)").GetComponent<CinemachineVirtualCamera>();
-        if (gameplayCamera != null)
+        if (skipPanel != null)
         {
-            gameplayCamera.Priority = 10; // Aumenta la prioridad para que esta cámara tome el control
-        }
-        else
-        {
-            Debug.LogError("Gameplay Camera (Virtual Camera (Main)) not found.");
+            skipPanel.SetActive(false); // Ocultar el skipPanel
         }
 
-        // Bajar la prioridad de la cámara de cinemática (Virtual Camera Track)
-        var cinematicCamera = GameObject.Find("Virtual Camera (Track)").GetComponent<CinemachineVirtualCamera>();
-        if (cinematicCamera != null)
-        {
-            cinematicCamera.Priority = 0; // Baja la prioridad de la cámara de cinemática
-        }
-        else
-        {
-            Debug.LogError("Cinematic Camera (Virtual Camera (Track)) not found.");
-        }
-    }
-
-    // Método llamado cuando la cinemática termina naturalmente (sin saltarla)
-    private void OnCinematicFinished(PlayableDirector director)
-    {
         if (player != null)
         {
-            player.SetActive(true); // Activar al jugador al terminar la cinemática
-        }
-        else
-        {
-            Debug.LogError("Player not found when cinematic finishes.");
+            Debug.Log("Player activated.");
+            player.SetActive(true); // Activar el Player
         }
 
-        // Asegurarse de que la cámara de gameplay esté activa
         SwitchToGameplayCamera();
+        ActivateWaveSpawners();
+    }
 
-        // Activar los WaveSpawners
-        foreach (var spawner in waveSpawners)
+    private void SwitchToGameplayCamera()
+    {
+        var gameplayCamera = GameObject.Find("Virtual Camera (Main)")?.GetComponent<CinemachineVirtualCamera>();
+        if (gameplayCamera != null)
         {
-            spawner.gameObject.SetActive(true);
+            gameplayCamera.Priority = 10; // Activar la cámara de gameplay
+            Debug.Log("Gameplay camera activated.");
+        }
+
+        var cinematicCamera = GameObject.Find("Virtual Camera (Track)")?.GetComponent<CinemachineVirtualCamera>();
+        if (cinematicCamera != null)
+        {
+            cinematicCamera.Priority = 0; // Desactivar la cámara de cinemática
+            Debug.Log("Cinematic camera deactivated.");
         }
     }
 
-    // Si usas el evento del PlayableDirector para detectar cuando termina la cinemática
-    private void OnEnable()
+    private void ActivateWaveSpawners()
     {
-        playableDirector.stopped += OnCinematicFinished; // Vincular evento al PlayableDirector
+        Debug.Log("ENTERING ACTIVATEWAVESPAWNER");
+        foreach (var spawner in waveSpawners)
+        {
+            if (spawner != null)
+            {
+                spawner.gameObject.SetActive(true); // Activar WaveSpawners
+                Debug.Log("WaveSpawner activated.");
+            }
+        }
+    }
+
+    private void OnCinematicFinished(PlayableDirector director)
+    {
+        Debug.Log("ONCINEMATICFINISHED");
+        if (!cinematicFinished)
+        {
+            HandlePostCinematic();
+        }
     }
 
     private void OnDisable()
     {
-        playableDirector.stopped -= OnCinematicFinished; // Desvincular evento al desactivar el objeto
+        if (playableDirector != null)
+        {
+            playableDirector.stopped -= OnCinematicFinished;
+        }
     }
 }
+
