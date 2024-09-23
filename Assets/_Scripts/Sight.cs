@@ -11,7 +11,6 @@ public class Sight : MonoBehaviour
 
     public LayerMask targetLayer;
     public LayerMask obstacleLayer;
-
     public Collider detectedTarget;
 
     Collider[] colliders;

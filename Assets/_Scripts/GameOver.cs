@@ -26,10 +26,10 @@ public class GameOver : MonoBehaviour
 
         if(playerHasWon)
         {
-            actualScore.text = "SCORE: " + PlayerPrefs.GetInt("Last Score");
-            actualTime.text = "TIME: " + PlayerPrefs.GetFloat("Last Time");
-            bestScore.text = "BEST SCORE: " + PlayerPrefs.GetInt("High Score");
-            bestTime.text = "BEST TIME: " + PlayerPrefs.GetFloat("Low Time");
+            actualScore.text = string.Format("SCORE: {0}", PlayerPrefs.GetInt("Last Score"));
+            actualTime.text = string.Format("TIME: {0}", PlayerPrefs.GetFloat("Last Time"));
+            bestScore.text = string.Format("BEST SCORE: {0}", PlayerPrefs.GetInt("High Score"));
+            bestTime.text = string.Format("BEST TIME: {0}", PlayerPrefs.GetFloat("Low Time"));
         }
     }
 

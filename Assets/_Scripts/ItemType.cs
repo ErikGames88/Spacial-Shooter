@@ -59,7 +59,7 @@ public class ItemType : MonoBehaviour
 
                 case Items.PowerUp:
                     powerUpEffect.Play();
-                    _powerUp.Duration = 60;
+                    _powerUp.Duration = 40;
                     _powerUp.StartPowerUp(other.gameObject);
                     break;
 
