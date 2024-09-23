@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class SkipCinematic : MonoBehaviour
 {
     PlayableDirector playableDirector; 
-    public GameObject skipPanel; // Asigna el panel aquí
+    public GameObject skipPanel; 
     public GameObject player;
     
     public List<WaveSpawner> waveSpawners;
@@ -19,66 +19,45 @@ public class SkipCinematic : MonoBehaviour
 
     void Start()
     {
-        // Asegurarse de que el Player está asignado
         if (player == null)
         {
             player = GameObject.FindWithTag("Player");
         }
 
-        if (player == null)
+        if (player != null)
         {
-            Debug.LogError("Player not found.");
-        }
-        else
-        {
-            player.SetActive(false); // Desactivar el Player al inicio
+            player.SetActive(false);
         }
 
-        // Asegurar la existencia de WaveSpawners
-        if (waveSpawners.Count == 0)
+        foreach (var spawner in waveSpawners)
         {
-            Debug.LogError("No WaveSpawners assigned.");
-        }
-        else
-        {
-            foreach (var spawner in waveSpawners)
+            if (spawner != null)
             {
-                if (spawner == null)
-                {
-                    Debug.LogError("A WaveSpawner is missing.");
-                }
-                else
-                {
-                    spawner.gameObject.SetActive(false); // Desactivar spawners al inicio
-                }
+                spawner.gameObject.SetActive(false);
             }
         }
 
-        // Mostrar el skipPanel
         if (skipPanel != null)
         {
-            skipPanel.SetActive(true); // Mostrar skipPanel al inicio
+            skipPanel.SetActive(true); 
         }
 
         
         if (hiddeCanvas != null)
         {
-            hiddeCanvas.enabled = false; // Mostrar skipPanel al inicio
+            hiddeCanvas.enabled = false; 
         }
 
-        playableDirector = GameObject.Find("Director").GetComponent<PlayableDirector>();
+        playableDirector = GameObject.Find("Director")?.GetComponent<PlayableDirector>();
         if (playableDirector != null)
         {
-            Debug.Log("DURATION: " + playableDirector.duration);
-            Debug.Log("TIME: " + playableDirector.time);
             playableDirector.stopped += OnCinematicFinished;
-            // playableDirector.Stop();
         }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S) || playableDirector.time >= playableDirector.duration)
+        if (Input.GetKeyDown(KeyCode.S) || playableDirector?.time >= playableDirector?.duration)
         {
             SkipCinematics();
         }
@@ -90,11 +69,11 @@ public class SkipCinematic : MonoBehaviour
         {
             if (hiddeCanvas != null)
             {
-                hiddeCanvas.enabled = true; // Mostrar skipPanel al inicio
+                hiddeCanvas.enabled = true; 
             }
-            cinematicFinished = true; // Asegurar que sólo se salte una vez
-            playableDirector.Stop(); // Detener la cinemática
-            HandlePostCinematic(); // Manejar el post-cinemático
+            cinematicFinished = true; 
+            playableDirector.Stop(); 
+            HandlePostCinematic(); 
         }
     }
 
@@ -102,13 +81,12 @@ public class SkipCinematic : MonoBehaviour
     {
         if (skipPanel != null)
         {
-            skipPanel.SetActive(false); // Ocultar el skipPanel
+            skipPanel.SetActive(false); 
         }
 
         if (player != null)
         {
-            Debug.Log("Player activated.");
-            player.SetActive(true); // Activar el Player
+            player.SetActive(true); 
         }
 
         SwitchToGameplayCamera();
@@ -120,35 +98,30 @@ public class SkipCinematic : MonoBehaviour
         var gameplayCamera = GameObject.Find("Virtual Camera (Main)")?.GetComponent<CinemachineVirtualCamera>();
         if (gameplayCamera != null)
         {
-            gameplayCamera.Priority = 10; // Activar la cámara de gameplay
-            Debug.Log("Gameplay camera activated.");
+            gameplayCamera.Priority = 10; 
         }
 
         var cinematicCamera = GameObject.Find("Virtual Camera (Track)")?.GetComponent<CinemachineVirtualCamera>();
         if (cinematicCamera != null)
         {
-            cinematicCamera.Priority = 0; // Desactivar la cámara de cinemática
-            Debug.Log("Cinematic camera deactivated.");
+            cinematicCamera.Priority = 0; 
         }
     }
 
     private void ActivateWaveSpawners()
     {
-        Debug.Log("ENTERING ACTIVATEWAVESPAWNER");
         foreach (var spawner in waveSpawners)
         {
             if (spawner != null)
             {
-                spawner.gameObject.SetActive(true); // Activar WaveSpawners
-                Debug.Log("WaveSpawner activated.");
+                spawner.gameObject.SetActive(true); 
             }
         }
     }
 
     private void OnCinematicFinished(PlayableDirector director)
     {
-        Debug.Log("ONCINEMATICFINISHED");
-        if (!cinematicFinished)
+       if (!cinematicFinished)
         {
             HandlePostCinematic();
         }

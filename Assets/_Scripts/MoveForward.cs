@@ -5,7 +5,6 @@ using UnityEngine;
 public class MoveForward : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("Bullet velocity")]
     [Range(0, 100)]
     private float speed;
     

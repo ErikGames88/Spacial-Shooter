@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class LifeBar : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("Target life that the bar will reflect")]
     private Life targetLife;
 
     private Image _image;

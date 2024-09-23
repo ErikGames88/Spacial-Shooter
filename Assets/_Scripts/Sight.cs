@@ -14,9 +14,11 @@ public class Sight : MonoBehaviour
 
     public Collider detectedTarget;
 
+    Collider[] colliders;
+
     void Update()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position,distance, targetLayer);
+        colliders = Physics.OverlapSphere(transform.position,distance, targetLayer);
         // First filter passed: DISTANCE
 
         detectedTarget = null;
@@ -32,16 +34,11 @@ public class Sight : MonoBehaviour
             if(angleToCollider < angle)
             {   
                 // Check that there are no obstacles in the enemy's line of sight to the target
-                if(!Physics.Linecast(transform.position, collider.bounds.center, out RaycastHit hit, obstacleLayer))
+                if(!Physics.Linecast(transform.position, collider.bounds.center, out RaycastHit hit, 
+                obstacleLayer))
                 {
-                    Debug.DrawLine(transform.position, collider.bounds.center, Color.green);
-                    
                     detectedTarget = collider; // Save the reference of the detected enemy
                     break;
-                }
-                else
-                {
-                    Debug.DrawLine(transform.position, hit.point, Color.red);
                 }
             }
             

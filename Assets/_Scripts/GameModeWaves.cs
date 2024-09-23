@@ -6,11 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameModeWaves : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("Player Life")]
     private Life playerLife;
 
     [SerializeField]
-    [Tooltip("Base Life")]
     private Life coreLife;
 
     void Start()

@@ -6,25 +6,33 @@ using UnityEngine;
 public class ItemType : MonoBehaviour
 {
     public enum Items {PlayerLife, CoreLife, Ammunition, Score, PowerUp}
-
-    
     public Items itemType;
-
 
     private int amountPlayerLife = 50;
     private int amountCoreLife = 100;
     private int ammountAmmunition;
-    int scoreToAdd = 1000;
+    private int scoreToAdd = 1000;
 
-    PowerUp _powerUp;
-    GameObject powerUpManager;
+    private PowerUp _powerUp;
+    private GameObject powerUpManager;
+    private ParticleSystem powerUpEffect;
 
 
     void Start()
     {
-        ammountAmmunition = Random.Range(10, 20);
+        ammountAmmunition = Random.Range(20, 30);
         powerUpManager = GameObject.Find("PowerUpManager");
         _powerUp = powerUpManager.GetComponent<PowerUp>();
+
+        GameObject player = GameObject.FindWithTag("Player");
+        if(player != null)
+        {
+            Transform particleTransform = player.transform.Find("Power Up Effect");
+            if(particleTransform != null) 
+            {
+                powerUpEffect = particleTransform.GetComponentInChildren<ParticleSystem>();
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,28 +58,16 @@ public class ItemType : MonoBehaviour
                     break;
 
                 case Items.PowerUp:
-                    _powerUp.duration = 5f;
-                    _powerUp.startPowerUp(other.gameObject);
+                    powerUpEffect.Play();
+                    _powerUp.Duration = 60;
+                    _powerUp.StartPowerUp(other.gameObject);
                     break;
 
                 default:
                 break;
             }
 
-                Destroy(gameObject);
-            /*if (itemType != Items.PowerUp)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                gameObject.SetActive(false);
-                Collider itemCollider = GetComponent<Collider>();
-                if (itemCollider != null)
-                {
-                    itemCollider.enabled = false;
-                }
-            }*/
+            Destroy(gameObject);
         }
     }
 
@@ -108,60 +104,8 @@ public class ItemType : MonoBehaviour
     
     void ApplyScore(Collider player)
     {
-        
         ScoreManager scoreManager = ScoreManager.SharedInstance;
-
-        
-        if (scoreManager != null)
-        {
-            scoreManager.Amount += scoreToAdd;
-        }
-        else
-        {
-            Debug.LogWarning("ScoreManager instance not found!");
-        }
+        scoreManager.Amount += scoreToAdd;
     }
-
-    /*private void ApplyPowerUp(Collider player)
-    {
-       PlayerShooting playerShooting = player.GetComponent<PlayerShooting>();
-        Life playerLife = player.GetComponent<Life>();
-
-        if (playerShooting != null && playerLife != null)
-        {
-            Debug.Log("Applying Power-up.");
-            // Activar munición infinita e invulnerabilidad
-            playerShooting.hasInfiniteAmmunition = true;
-            playerLife.isInvulnerable = true;
-
-            float powerUpDuration = 10f;
-            // Desactivar el power-up después de un tiempo
-            Debug.Log("Power-up coroutine started.");
-            StartCoroutine(DisablePowerUp(playerShooting, playerLife, powerUpDuration));
-        }
-        else
-        {
-            Debug.LogWarning("PlayerShooting or Life component not found.");
-        }
-        
-    }
-
-    private IEnumerator DisablePowerUp(PlayerShooting playerShooting, Life playerLife, float duration)
-    {
-         Debug.Log("Waiting " + duration + " seconds to deactivate power-up...");
-        yield return new WaitForSeconds(duration);
-
-        // Desactivar munición infinita e invulnerabilidad
-        playerShooting.hasInfiniteAmmunition = false;
-        playerLife.isInvulnerable = false;
-        
-        // Opcional: Mostrar mensaje de depuración
-        Debug.Log("Power-up deactivated.");
-
-        // Destruir el PowerUp después de que el efecto haya terminado
-        Destroy(gameObject);
-    }*/
-
-    
 }
 

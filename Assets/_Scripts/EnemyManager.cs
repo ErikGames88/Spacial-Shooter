@@ -14,7 +14,6 @@ public class EnemyManager : MonoBehaviour
         get => enemies.Count;
     }
 
-    [Tooltip("Enemy added or destroyed")]
     public UnityEvent onEnemyChanged; 
 
     void Awake()

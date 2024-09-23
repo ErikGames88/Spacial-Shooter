@@ -6,42 +6,39 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    [Tooltip("Score got after defeating an enemy")]
     private int pointsAmount;
 
     EnemyAI _enemyAI;
 
+    Life life;
+
+    private AudioSource explosionAudio;
+
     void Awake()
     {
-        var life = GetComponent<Life>();
-        var _enemyAI = GetComponent<EnemyAI>();
+        life = GetComponent<Life>();
+        _enemyAI = GetComponentInChildren<EnemyAI>();
+        explosionAudio = GetComponent<AudioSource>();
 
         life.onDeath.AddListener(DestroyEnemy);
-
     }
 
     void Start()
     {
         EnemyManager.SharedInstance.AddEnemy(this);
     }
-    
+
     public void DestroyEnemy()
     {
         if(_enemyAI)
         {
             _enemyAI.currentState = EnemyAI.EnemyState.Death;
         }
-        else
-        {
-            Debug.LogWarning("FAILED");
-        }
 
         Animator anim = GetComponent<Animator>();
         anim.SetTrigger("Play Die");
 
         Invoke("PlayDestruction", 1f);
-        
-        OnDestroy();
         
         Destroy(gameObject, 2f);
 
@@ -56,7 +53,7 @@ public class Enemy : MonoBehaviour
 
     void OnDestroy()
     {
-        var life = GetComponent<Life>();
+        
         life.onDeath.RemoveListener(DestroyEnemy);
     }
 
@@ -64,5 +61,6 @@ public class Enemy : MonoBehaviour
     {
         ParticleSystem explosion = GetComponentInChildren<ParticleSystem>();
         explosion.Play();
+        explosionAudio.Play();
     }
 }

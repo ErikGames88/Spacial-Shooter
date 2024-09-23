@@ -4,23 +4,32 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public float duration; // Duración del PowerUp en segundos
+    [SerializeField]
+    private float duration; 
     GameObject player;
 
-    public void startPowerUp(GameObject other)
+    private ParticleSystem powerUpEffect;
+
+    public float Duration
+    {
+        get => duration;
+        set => duration = value; 
+    }
+
+    public void StartPowerUp(GameObject other)
     {
         player = other;
+
+        Transform particleTransform = player.transform.Find("Power Up Effect");
+        if (particleTransform != null)
+        {
+            powerUpEffect = particleTransform.GetComponentInChildren<ParticleSystem>();
+        }
         ApplyPowerUp(player, true);
 
-        // Verifica si el GameObject sigue activo antes de iniciar la corrutina
         if (gameObject.activeInHierarchy)
         {
-            Debug.Log("ENTERING THE COROUTINE");
             StartCoroutine(HandlePowerUpDuration());
-        }
-        else
-        {
-            Debug.LogWarning("Power-up GameObject is inactive. Cannot start coroutine.");
         }
     }
 
@@ -31,26 +40,21 @@ public class PowerUp : MonoBehaviour
 
         if (playerShooting != null && playerLife != null)
         {
-            // Activar/desactivar munición infinita e invulnerabilidad
             playerShooting.hasInfiniteAmmunition = apply;
             playerLife.isInvulnerable = apply;
-
-            // Mostrar mensaje de depuración
-            // Debug.Log("Power-up applied: Infinite ammunition and invulnerability activated.");
         }
-        else
-        {
-            Debug.LogWarning("PlayerShooting or Life component not found.");
-        }
+        
     }
 
     private IEnumerator HandlePowerUpDuration()
     {
-        // Esperar el tiempo especificado antes de destruir el objeto
         yield return new WaitForSeconds(duration);
-
-        // Restaurar el PowerUp y desactivarlo después de la duración
-        Debug.Log("Power-up deactivated.");
         ApplyPowerUp(player, false);
+
+        if (powerUpEffect != null)
+        {
+            powerUpEffect.Stop();
+        }
+        
     }
 }

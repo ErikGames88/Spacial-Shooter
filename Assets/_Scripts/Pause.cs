@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
@@ -51,8 +52,7 @@ public class Pause : MonoBehaviour
 
     private void ExitGame()
     {
-        print("EXECUTION COMPLETED");
-        Application.Quit();
+        SceneManager.LoadScene("Main Menu Scene");
     }
 
 }

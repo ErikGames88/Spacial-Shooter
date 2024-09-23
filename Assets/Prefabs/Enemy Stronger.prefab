@@ -66,7 +66,7 @@ PrefabInstance:
     - target: {fileID: 4301505366083123837, guid: 77e840297435f7a47a5efda0e1a8f518,
         type: 3}
       propertyPath: pointsAmount
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4727279947624083562, guid: 77e840297435f7a47a5efda0e1a8f518,
         type: 3}
@@ -101,7 +101,7 @@ PrefabInstance:
     - target: {fileID: 6973401120408945017, guid: 77e840297435f7a47a5efda0e1a8f518,
         type: 3}
       propertyPath: maximumLife
-      value: 100
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7926556129384663290, guid: 77e840297435f7a47a5efda0e1a8f518,
         type: 3}

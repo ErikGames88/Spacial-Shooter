@@ -9,25 +9,18 @@ public class ObjectPool : MonoBehaviour
     * Public
     * Static
     * Same type as the class itself */
-    public static ObjectPool SharedInstance; // Broken nomenclature to emphasise that it is a singleton
+    public static ObjectPool SharedInstance; 
 
     [SerializeField]
-    [Tooltip("Bullet shot by Player")]
     private GameObject prefab;
-
-    /*[SerializeField]
-    [Tooltip("Bullet shot by Enemy")]
-    private GameObject enemyPrefab;*/
 
 
     // OBJECT POOLING (PROPERTIES)
 
     [SerializeField]
-    [Tooltip("List where the pooled objects are located")]
     private List<GameObject> pooledObjects; // List where the pooled objects are located 
     
     [SerializeField]
-    [Tooltip("Number of objects to pool (Number of lasers")]
     private int amountToPool; // Number of objects to pool (Number of bullets)
 
     
@@ -40,7 +33,7 @@ public class ObjectPool : MonoBehaviour
         } 
         else
         {
-            Debug.LogWarning("Object Pool duplicates must be destroyed: ", gameObject);
+            // Debug.LogWarning("Object Pool duplicates must be destroyed: ", gameObject);
             Destroy(gameObject); // Destroy other possible pools (there is only one)
         }
     }

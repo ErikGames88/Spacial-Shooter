@@ -10,16 +10,15 @@ public class ThunderAudio : MonoBehaviour
 
     private void Start()
     {
-        // Inicia la corrutina
         StartCoroutine(PlayThunderAtIntervals());
     }
 
     private IEnumerator PlayThunderAtIntervals()
     {
-        while (true) // Ejecuta de manera infinita
+        while (true) 
         {
-            _audioSource.Play(); // Reproduce el trueno
-            yield return new WaitForSeconds(interval); // Espera el intervalo antes de reproducir nuevamente
+            _audioSource.Play(); 
+            yield return new WaitForSeconds(interval); 
         }
     }
 }

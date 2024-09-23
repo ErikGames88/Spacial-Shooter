@@ -55,6 +55,7 @@ public class EnemyAI : MonoBehaviour
             break;
 
             default:
+            _animator.SetBool("Shot Laser", false);
             break;
         }
     }

@@ -40,7 +40,6 @@ public class GameOver : MonoBehaviour
 
     public void ExitGame()
     {
-        print("EXECUTION COMPLETED");
         Application.Quit();
     }
 }

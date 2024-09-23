@@ -4843,6 +4843,7 @@ GameObject:
   - component: {fileID: 955783359637984209}
   - component: {fileID: 2168611682360374643}
   - component: {fileID: 9097745243258500489}
+  - component: {fileID: 1937519938981641500}
   m_Layer: 0
   m_Name: Add Power Up
   m_TagString: Untagged
@@ -4950,7 +4951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c8280d0f05d0345a2fa58ec249566c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 30
+  lifetime: 60
 --- !u!114 &2168611682360374643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4977,6 +4978,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: {x: 0, y: 100, z: 0}
+--- !u!114 &1937519938981641500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4307112407868005380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872b0c8d69f184548916507d21f890b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 60
 --- !u!1001 &4561734780744803652
 PrefabInstance:
   m_ObjectHideFlags: 0

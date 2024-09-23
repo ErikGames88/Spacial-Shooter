@@ -7,7 +7,6 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager SharedInstance;
 
     [SerializeField]
-    [Tooltip("Score of the current game")]
     private int amount;
 
     public int Amount
@@ -24,7 +23,6 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Score Manager duplicates must be destroyed: ", gameObject);
             Destroy(gameObject);
         }
     }
