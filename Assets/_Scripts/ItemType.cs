@@ -9,9 +9,9 @@ public class ItemType : MonoBehaviour
     public Items itemType;
 
     private int amountPlayerLife = 50;
-    private int amountCoreLife = 100;
+    private int amountCoreLife = 400;
     private int ammountAmmunition;
-    private int scoreToAdd = 1000;
+    private int scoreToAdd = 200;
 
     private PowerUp _powerUp;
     private GameObject powerUpManager;
@@ -20,7 +20,7 @@ public class ItemType : MonoBehaviour
 
     void Start()
     {
-        ammountAmmunition = Random.Range(20, 30);
+        ammountAmmunition = Random.Range(30, 40);
         powerUpManager = GameObject.Find("PowerUpManager");
         _powerUp = powerUpManager.GetComponent<PowerUp>();
 
