@@ -23,8 +23,7 @@ public class SkipCinematic : MonoBehaviour
         {
             player = GameObject.FindWithTag("Player");
         }
-
-        if (player != null)
+        else if (player != null)
         {
             player.SetActive(false);
         }
@@ -73,6 +72,7 @@ public class SkipCinematic : MonoBehaviour
             }
             cinematicFinished = true; 
             playableDirector.Stop(); 
+            playableDirector.enabled = false;
             HandlePostCinematic(); 
         }
     }

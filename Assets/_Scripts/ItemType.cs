@@ -9,7 +9,7 @@ public class ItemType : MonoBehaviour
     public Items itemType;
 
     private int amountPlayerLife = 50;
-    private int amountCoreLife = 400;
+    private int amountCoreLife = 500;
     private int ammountAmmunition;
     private int scoreToAdd = 200;
 
