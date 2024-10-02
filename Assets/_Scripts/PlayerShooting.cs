@@ -28,7 +28,7 @@ public class PlayerShooting : MonoBehaviour
 
             if(bulletsAmount > 0 || hasInfiniteAmmunition) 
             {
-                if(weapon.ShootLaser("Player Laser", 0.25f))
+                if(weapon.ShootLaser("Player Laser", 0.15f))
                 {
                     if(!hasInfiniteAmmunition)
                     {
