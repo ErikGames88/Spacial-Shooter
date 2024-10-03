@@ -378,7 +378,7 @@ MonoBehaviour:
   prefab: {fileID: 4742253345119914886, guid: 6295366a76ef0f74f9eee6be614ab2d4, type: 3}
   startTime: 630
   endTime: 700
-  spawnRate: 12
+  spawnRate: 15
 --- !u!1 &97177082
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +545,7 @@ MonoBehaviour:
   prefab: {fileID: 7926556129384663290, guid: 77e840297435f7a47a5efda0e1a8f518, type: 3}
   startTime: 280
   endTime: 340
-  spawnRate: 8
+  spawnRate: 12
 --- !u!114 &115200054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12121,7 +12121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759853902}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03384081, y: 0.0000000021495659, z: -7.2784744e-11, w: 0.99942726}
+  m_LocalRotation: {x: 0.03384081, y: -0.0000000021495654, z: 7.278473e-11, w: 0.99942726}
   m_LocalPosition: {x: 52.5, y: 56.19, z: 56.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13497,7 +13497,7 @@ MonoBehaviour:
   prefab: {fileID: 7926556129384663290, guid: 77e840297435f7a47a5efda0e1a8f518, type: 3}
   startTime: 350
   endTime: 410
-  spawnRate: 10
+  spawnRate: 12
 --- !u!114 &1264929506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13513,7 +13513,7 @@ MonoBehaviour:
   prefab: {fileID: 4742253345119914886, guid: 6295366a76ef0f74f9eee6be614ab2d4, type: 3}
   startTime: 350
   endTime: 410
-  spawnRate: 30
+  spawnRate: 60
 --- !u!1 &1277678966
 GameObject:
   m_ObjectHideFlags: 0
@@ -20010,7 +20010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603486646}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03384081, y: 0.0000000021495659, z: -7.2784744e-11, w: 0.99942726}
+  m_LocalRotation: {x: 0.03384081, y: -0.0000000021495654, z: 7.278473e-11, w: 0.99942726}
   m_LocalPosition: {x: -10.886032, y: 3.9350739, z: -33.204033}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35868,7 +35868,7 @@ MonoBehaviour:
   prefab: {fileID: 7926556129384663290, guid: 77e840297435f7a47a5efda0e1a8f518, type: 3}
   startTime: 560
   endTime: 620
-  spawnRate: 8
+  spawnRate: 10
 --- !u!114 &2135311993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35884,7 +35884,7 @@ MonoBehaviour:
   prefab: {fileID: 4742253345119914886, guid: 6295366a76ef0f74f9eee6be614ab2d4, type: 3}
   startTime: 560
   endTime: 620
-  spawnRate: 15
+  spawnRate: 30
 --- !u!1 &2836004474926343862 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6773446730153664013, guid: 834c53d8cdc875f4695a1093630919b1,
